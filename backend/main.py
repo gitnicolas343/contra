@@ -31,10 +31,10 @@ def normalizar_documento(doc: str | None) -> str | None:
     # quitar espacios y puntos
     doc = doc.replace(" ", "").replace(".", "").strip()
 
-    # quitar parte después de guión (ej. '900123456-7' -> '900123456')
+    # quitar parte     después de guión (ej. '900123456-7' -> '900123456')
     doc = doc.split("-")[0]
 
-    # dejar solo dígitos
+    # dejar solo    dígitos
     solo_digitos = re.sub(r"\D", "", doc)
 
     return solo_digitos or None
