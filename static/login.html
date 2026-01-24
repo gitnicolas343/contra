@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ContractRed – Iniciar sesión</title>
+      
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+      
+          :root {
+            --primary: #6a0dad;
+            --primary-light: #8a2be2;
+            --primary-dark: #4a0072;
+            --primary-soft: #ece0ff;
+            --text-main: #111827;
+            --text-secondary: #4b5563;
+            --nav-text: #333333;
+            --bg-start: #f0f4ff;
+            --bg-end: #e0e8ff;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --error: #e11d48;
+          }
+      
+          * { box-sizing: border-box; }
+      
+          body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+          }
+      
+          /* Header */
+          header {
+            padding: 16px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, var(--primary), var(--primary-light)) 1;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+          }
+          header img { height: 90px; }
+      
+          nav {
+            background: linear-gradient(135deg, var(--white), #fafbff);
+            padding: 10px 18px;
+            border-radius: 16px;
+            display: flex;
+            gap: 8px;
+            border: 1px solid rgba(106, 13, 173, 0.15);
+            box-shadow: var(--shadow-sm);
+          }
+          nav a {
+            font-size: 15px;
+            color: var(--nav-text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 12px;
+            transition: all 0.25s ease;
+          }
+          nav a:hover {
+            background: var(--primary-soft);
+            color: var(--primary);
+          }
+      
+          main {
+            padding: 44px 18px 60px;
+            display: flex;
+            justify-content: center;
+          }
+      
+          .card {
+            width: 100%;
+            max-width: 560px;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 28px 26px;
+            border: 1px solid rgba(148,163,184,0.4);
+            box-shadow: 0 12px 40px rgba(15,23,42,0.15);
+          }
+      
+          .title {
+            font-size: 26px;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+      
+          .subtitle {
+            margin: 0 0 18px 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+          }
+      
+          .section-title {
+            font-weight: 800;
+            margin: 18px 0 10px;
+            font-size: 14px;
+            color: var(--text-main);
+          }
+      
+          /* ===== Social card block ===== */
+          .social-card {
+            background: linear-gradient(135deg, #f9fafb, #ffffff);
+            border-radius: 24px;
+            padding: 22px 22px 26px;
+            border: 1px solid rgba(148,163,184,0.45);
+            box-shadow: var(--shadow-lg);
+          }
+      
+          .social-title {
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+          }
+      
+          .social-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+      
+          /* ===== BOTÓN SOCIAL (color oscuro como tu captura) ===== */
+          .btn-social {
+            width: 100%;
+            height: 52px;
+            background: #111827;       /* el color que pediste */
+            color: #f9fafb;
+            border-radius: 999px;
+            border: 1px solid #1f2937;
+      
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0 18px;
+      
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+      
+            box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+            transition: all 0.25s ease;
+          }
+      
+          .btn-social:hover {
+            transform: translateY(-2px);
+            background: #030712;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+          }
+      
+          /* Icono (círculo blanco) */
+          .social-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            background: #ffffff;
+      
+            display: flex;
+            align-items: center;
+            justify-content: center;
+      
+            flex-shrink: 0;
+          }
+      
+          .social-icon svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+          }
+      
+          .social-divider {
+            text-align: center;
+            margin: 22px 0 18px;
+            font-size: 13px;
+            color: #6b7280;
+            position: relative;
+          }
+      
+          .social-divider::before,
+          .social-divider::after {
+            content: "";
+            width: 38%;
+            height: 1px;
+            background: rgba(148,163,184,0.7);
+            position: absolute;
+            top: 50%;
+          }
+      
+          .social-divider::before { left: 0; }
+          .social-divider::after { right: 0; }
+      
+          /* Form */
+          .form-row { margin-bottom: 14px; }
+      
+          .form-row label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 6px;
+          }
+      
+          .input-field {
+            width: 100%;
+            padding: 11px 13px;
+            border-radius: 14px;
+            border: 1px solid #cbd5e1;
+            font-size: 15px;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+            outline: none;
+          }
+      
+          .input-field:focus {
+            border-color: rgba(106,13,173,0.35);
+            box-shadow: 0 0 0 4px rgba(106,13,173,0.10);
+            background: #ffffff;
+          }
+      
+          .btn-primary {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+            box-shadow: 0 14px 30px rgba(106,13,173,0.28);
+            transition: transform 0.15s ease;
+          }
+          .btn-primary:hover { transform: translateY(-1px); }
+          .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+      
+          .hint {
+            margin-top: 20px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+          }
+      
+          .error {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(225,29,72,0.10);
+            border: 1px solid rgba(225,29,72,0.25);
+            color: #9f1239;
+            font-weight: 600;
+            display: none;
+          }
+      
+          /* Modales */
+          .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            z-index: 2000;
+          }
+      
+          .modal-card {
+            width: 100%;
+            max-width: 920px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            padding: 18px 18px;
+            border: 1px solid rgba(148,163,184,0.4);
+            max-height: 86vh;
+            overflow: auto;
+          }
+      
+          .modal-title { margin: 4px 0 6px; font-size: 18px; font-weight: 900; }
+          .modal-text  { margin: 0 0 12px; color: var(--text-secondary); font-size: 14px; }
+      
+          .modal-detalle-title { font-weight: 900; margin: 10px 0 8px; }
+          .modal-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+          .modal-table th, .modal-table td {
+            border-bottom: 1px solid rgba(148,163,184,0.45);
+            padding: 10px 8px;
+            text-align: left;
+            vertical-align: top;
+          }
+          .modal-table th { background: rgba(106,13,173,0.06); font-weight: 900; }
+          .modal-note { margin-top: 10px; font-size: 12px; color: var(--text-secondary); }
+      
+          .modal-actions {
+            margin-top: 14px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+          }
+      
+          .loading-card {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 18px 18px;
+            border: 1px solid rgba(148,163,184,0.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            text-align: center;
+          }
+      
+          .spinner {
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: 5px solid rgba(106,13,173,0.18);
+            border-top-color: rgba(106,13,173,0.9);
+            margin: 6px auto 10px;
+            animation: spin 0.9s linear infinite;
+          }
+          @keyframes spin { to { transform: rotate(360deg); } }
+      
+          .loading-title { font-weight: 900; margin: 8px 0 6px; }
+          .loading-text { font-size: 13px; color: var(--text-secondary); margin: 0; }
+      
+          @media (max-width: 900px) {
+            header { padding: 14px 18px; flex-direction: column; align-items: flex-start; gap: 10px; }
+            nav { width: 100%; justify-content: center; flex-wrap: wrap; }
+            header img { height: 72px; }
+          }
+          .forgot-row{
+            margin-top:
+            15px;text-align: left;
+
+            margin-bottom: 10px;
+          }
+          .forgot-row a{
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 13px;
+          }
+
+          .forgot-row a:hover{
+            text-decoration: underline;
+
+          }
+
+        </style>
+    </head>
+      
+<body>
+  <!-- =========================================================
+       HEADER (consistente)
+       ========================================================= -->
+  <header>
+    <a href="/static/index.html">
+      <img src="assets/logo.png" alt="Logo ContractRed">
+    </a>
+
+    <nav>
+      <a href="/static/inscripcion.html">Inscripción</a>
+      <a href="/static/promociones.html">Promociones</a>
+      <a href="/static/ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1 class="title">Iniciar sesión</h1>
+      <p class="subtitle">
+        Ingresa a tu cuenta. Al autenticarte, validaremos nuevamente las listas negras (Procuraduría, SECOP I y SECOP II)
+        y te llevaremos al panel correspondiente.
+      </p>
+
+      <!-- =========================================================
+           BLOQUE A: Login con Google
+        
+        
+           ========================================================= -->
+      <button class="btn-social" type="button" onclick="continueWithProvider('google')">
+        <span class="social-icon">
+            <svg viewBox = "0 0 24 24">
+                <path fill="#EA4335" d="M12 10.2v3.6h5c-.2 1.2-.8 2.3-1.7 3.1l2.7 2.1c1.6-1.5 2.6-3.7 2.6-6.2 0-.5 0-.9-.1-1.3H12z"/>
+                <path fill="#34A853" d="M6.5 14.3c-.3-.8-.5-1.6-.5-2.3s.2-1.6.5-2.3L3.8 7.6A9.9 9.9 0 0 0 2 12c0 1.6.4 3.2 1.1 4.4l3.4-2.1z"/>
+                <path fill="#4285F4" d="M12 22c2.7 0 5-1 6.6-2.6l-2.7-2.1c-.8.5-1.7.8-2.6.8-2 0-3.8-1.3-4.5-3.1l-3.4 2.1A9.9 9.9 0 0 0 12 22z"/>
+                <path fill="#FBBC05" d="M12 2C9.1 2 6.5 3.3 4.9 5.4l3.4 2.1A5.8 5.8 0 0 1 12 6c1 0 1.8.3 2.6.8l2.7-2.1A9.9 9.9 0 0 0 12 2z"/>
+
+            </svg>
+
+        </span>
+        <span>Continuar con Google</span>
+      </button>
+
+
+
+        
+
+      <!-- =========================================================
+           BLOQUE B: Login con correo/contraseña
+           ========================================================= -->
+      <div class="section-title">Correo y contraseña</div>
+
+      <div class="form-row">
+        <label for="email">Correo</label>
+        <input id="email" class="input-field" type="email" placeholder="tucorreo@empresa.com" autocomplete="email" />
+      </div>
+      
+      <div class="form-row">
+        <label for="password">Contraseña</label>
+        <input id="password" class="input-field" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+
+      <div class="forgot-row">
+        <a href="#" id="forgotLink">¿Olvidaste tu contraseña?</a>
+      </div>
+      
+      
+
+      <button class="btn-primary" id="btnLogin" type="button">Entrar</button>
+
+      <div class="hint">
+        ¿No tienes cuenta? <a href="/static/inscripcion.html">Regístrate aquí</a>.
+      </div>
+
+      <div class="error" id="errorBox"></div>
+    </div>
+  </main>
+
+  <!-- =========================================================
+       MODAL LISTAS NEGRAS (igual idea que verificacion.html)
+       ========================================================= -->
+  <div id="modal-listas" class="modal-backdrop" style="display:none">
+    <div class="modal-card">
+      <h2 id="modal-titulo" class="modal-title"></h2>
+      <p id="modal-mensaje" class="modal-text"></p>
+      <div id="modal-detalle" class="modal-detalle"></div>
+      <div class="modal-actions">
+        <button id="modal-continuar" class="btn-primary" style="width:auto; padding:10px 16px;">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL CARGANDO (igual idea que verificacion.html)
+       ========================================================= -->
+  <div id="modal-loading" class="modal-backdrop" style="display:none">
+    <div class="loading-card" role="dialog" aria-modal="true" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <div class="loading-title" id="loading-title">Cargando…</div>
+      <p class="loading-text" id="loading-text">Por favor espera.</p>
+    </div>
+  </div>
+
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    /* =========================================================
+       3) CONFIGURACIÓN (ajusta SOLO estos 3 valores)
+       ========================================================= */
+
+    // (A) Reutiliza estos valores desde verificacion_oauth.html
+    const SUPABASE_URL = "<PEGA_AQUI_TU_SUPABASE_URL>";
+    const SUPABASE_ANON_KEY = "<PEGA_AQUI_TU_SUPABASE_ANON_KEY>";
+
+    // (B) Backend API (sigues usando 127.0.0.1:8000 como en tu proyecto)
+    const API_BASE = window.location.origin;
+
+
+
+    /* =========================================================
+       4) INICIALIZACIÓN SUPABASE
+       ========================================================= */
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      // Aquí sí conviene permitir que Supabase “vea” el callback.
+      // (Si tu OAuth retorna por hash, igual lo manejamos abajo.)
+      auth: { detectSessionInUrl: true },
+    });
+
+    /* =========================================================
+       5) REFERENCIAS DOM (para no buscar elementos 50 veces)
+       ========================================================= */
+    const btnGoogle = document.getElementById("btnGoogle");
+    const btnLogin = document.getElementById("btnLogin");
+    const emailEl = document.getElementById("email");
+    const passEl = document.getElementById("password");
+    const errorBox = document.getElementById("errorBox");
+
+    const modalListas = document.getElementById("modal-listas");
+    const modalTitulo = document.getElementById("modal-titulo");
+    const modalMensaje = document.getElementById("modal-mensaje");
+    const modalDetalle = document.getElementById("modal-detalle");
+    const modalContinuar = document.getElementById("modal-continuar");
+
+    const modalLoading = document.getElementById("modal-loading");
+    const loadingTitle = document.getElementById("loading-title");
+    const loadingText = document.getElementById("loading-text");
+
+    /* =========================================================
+       6) HELPERS UI: errores + loading + “siguiente frame”
+          (el patrón de loader es el mismo que ya usas)
+       ========================================================= */
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.style.display = "block";
+    }
+
+    function clearError() {
+      errorBox.textContent = "";
+      errorBox.style.display = "none";
+    }
+
+    function setLoading(show, title, text) {
+      if (title) loadingTitle.textContent = title;
+      if (text) loadingText.textContent = text;
+      modalLoading.style.display = show ? "flex" : "none";
+    }
+
+    // Similar a tu nextFrame() en verificacion.html: ayuda a renderizar el modal antes de hacer fetch pesado.
+    function nextFrame() {
+      return new Promise((resolve) => requestAnimationFrame(() => resolve()));
+    }
+
+    /* =========================================================
+       7) HELPERS “negocio”
+       ========================================================= */
+
+    // (1) Resuelve usuario_id interno desde tu backend (tabla usuarios)
+    async function resolveUsuarioIdByEmail(email) {
+      const url = API_BASE + "/usuarios/por_correo?email=" + encodeURIComponent(email);
+      const res = await fetch(url, { method: "GET", headers: { Accept: "application/json" } });
+      const json = await res.json().catch(() => ({}));
+      return json; // { ok, usuario_id, tiene_detalle, motivo? }
+    }
+
+    // (2) Revalida listas negras en tiempo real (mismo endpoint que usa verificacion.html) :contentReference[oaicite:5]{index=5}
+    async function consultarListasNegras(usuarioId) {
+      const url = API_BASE + "/listas_negras/resumen?usuario_id=" + encodeURIComponent(usuarioId);
+      const res = await fetch(url, { method: "GET", headers: { Accept: "application/json" } });
+      const json = await res.json().catch(() => ({}));
+      return { ok: res.ok, data: json };
+    }
+
+    // (3) Renderiza el modal de sanciones con tabla (misma idea que verificacion.html) :contentReference[oaicite:6]{index=6}
+    function showListasModal(resumenListas) {
+      const estaEnListaNegra = !!(resumenListas && resumenListas.en_lista_negra);
+
+      modalTitulo.textContent = estaEnListaNegra
+        ? "Atención: encontramos sanciones registradas"
+        : "Verificación completada";
+
+      modalMensaje.textContent = (resumenListas && resumenListas.resumen)
+        ? resumenListas.resumen
+        : (estaEnListaNegra
+            ? "Se encontraron sanciones asociadas a este registro. Revisa el detalle antes de continuar."
+            : "No se encontraron sanciones vigentes asociadas a este registro.");
+
+      // Tabla de sanciones (máximo 10, igual que tu modal actual)
+      let tablaHtml = "";
+      const sanciones = Array.isArray(resumenListas?.sanciones) ? resumenListas.sanciones : [];
+
+      if (sanciones.length > 0) {
+        const filasHtml = sanciones.slice(0, 10).map((s, idx) => {
+          const fuente = s.fuente || "-";
+          const tipo = s.tipo_detalle || s.tipo_registro || "-";
+          const nombre = s.nombre_sancionado || "-";
+          const ident = s.identificador || "-";
+          const estado = s.estado || "-";
+          const fecha = s.fecha_evento || "-";
+
+          let valorTexto = "-";
+          if (s.valor_multa !== null && s.valor_multa !== undefined) {
+            try {
+              valorTexto = Number(s.valor_multa).toLocaleString("es-CO", { style: "currency", currency: "COP" });
+            } catch (_) {}
+          }
+
+          const enlace = s.url_detalle ? `<a href="${s.url_detalle}" target="_blank" rel="noopener">Ver</a>` : "-";
+
+          return `
+            <tr>
+              <td>${idx + 1}</td>
+              <td>${fuente}</td>
+              <td>${tipo}</td>
+              <td>${nombre}</td>
+              <td>${ident}</td>
+              <td>${valorTexto}</td>
+              <td>${fecha}</td>
+              <td>${estado}</td>
+              <td>${enlace}</td>
+            </tr>
+          `;
+        }).join("");
+
+        tablaHtml = `
+          <div class="modal-detalle-title">Detalle de sanciones encontradas</div>
+          <table class="modal-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Fuente</th>
+                <th>Tipo</th>
+                <th>Sancionado / Proveedor</th>
+                <th>Identificador</th>
+                <th>Valor</th>
+                <th>Fecha evento</th>
+                <th>Estado</th>
+                <th>Enlace</th>
+              </tr>
+            </thead>
+            <tbody>${filasHtml}</tbody>
+          </table>
+          <p class="modal-note">
+            Mostrando hasta 10 sanciones. Para más detalle revisa las fuentes oficiales (Procuraduría, SECOP I y SECOP II).
+          </p>
+        `;
+      }
+
+      modalDetalle.innerHTML = tablaHtml;
+      modalListas.style.display = "flex";
+
+      // El botón decide destino según resultado (igual a verificacion.html)
+      modalContinuar.textContent = estaEnListaNegra ? "Ir a ayuda" : "Continuar";
+
+      modalContinuar.onclick = async () => {
+        modalListas.style.display = "none";
+        setLoading(true, "Cargando…", "Estamos preparando tu panel. Por favor espera.");
+        await nextFrame();
+        window.location.href = estaEnListaNegra ? "ayuda.html" : "lobby.html";
+      };
+    }
+
+    /* =========================================================
+       8) FLUJO PRINCIPAL POST-LOGIN:
+          - resolver usuario_id
+          - exigir detalle (si falta -> verificacion.html)
+          - revalidar listas negras
+          - mostrar modal
+       ========================================================= */
+    async function postLoginFlow(email) {
+      clearError();
+
+      setLoading(true, "Validando cuenta…", "Verificando tu registro interno en ContractRed.");
+      await nextFrame();
+
+      // 1) Resolver usuario_id
+      const resolved = await resolveUsuarioIdByEmail(email);
+
+      if (!resolved || !resolved.ok) {
+        setLoading(false);
+        showError("No encontramos tu usuario interno. Si es tu primera vez, regístrate en Inscripción.");
+        return;
+      }
+
+      const usuarioId = resolved.usuario_id;
+      localStorage.setItem("usuario_id", usuarioId);
+
+      // 2) Si no tiene detalle, lo mandamos a completar datos (para poder consultar listas por doc/nit/empresa)
+      if (!resolved.tiene_detalle) {
+        setLoading(true, "Falta un paso…", "Necesitamos tus datos (documento, NIT, empresa) para validar listas negras.");
+        await nextFrame();
+        window.location.href = "/static/verificacion.html";
+        return;
+      }
+
+      // 3) Revalidación real-time (endpoint ya usado en verificacion.html)
+      setLoading(true, "Consultando listas negras…", "Validando Procuraduría, SECOP I y SECOP II. No cierres esta ventana.");
+      await nextFrame();
+
+      const listas = await consultarListasNegras(usuarioId);
+      setLoading(false);
+
+      if (!listas.ok) {
+        showError("Ingresaste correctamente, pero no pudimos validar listas negras en este momento. Intenta más tarde.");
+        return;
+      }
+
+      // 4) Mostrar modal final (y redirigir según resultado)
+      showListasModal(listas.data);
+    }
+
+    /* =========================================================
+       9) EVENTO: Login con Google
+          - redirige y vuelve a login.html con token en hash o code
+       ========================================================= */
+    btnGoogle.onclick = async () => {
+      clearError();
+
+      // Modal de carga: feedback inmediato
+      setLoading(true, "Conectando con Google…", "Serás redirigido para autenticarte.");
+      await nextFrame();
+
+      const redirectTo = window.location.origin + "/login.html"; // callback aquí mismo
+
+      const { error } = await supabaseClient.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo },
+      });
+
+      // Si hay error antes de redirigir:
+      if (error) {
+        setLoading(false);
+        showError("No se pudo iniciar sesión con Google: " + error.message);
+      }
+    };
+
+    /* =========================================================
+       10) EVENTO: Login con correo/contraseña (Supabase Auth)
+       ========================================================= */
+    btnLogin.onclick = async () => {
+      clearError();
+
+      const email = (emailEl.value || "").trim();
+      const password = passEl.value || "";
+
+      if (!email || !password) {
+        showError("Ingresa tu correo y tu contraseña.");
+        return;
+      }
+
+      btnLogin.disabled = true;
+      setLoading(true, "Iniciando sesión…", "Validando tus credenciales.");
+      await nextFrame();
+
+      try {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
+        if (error || !data?.user) {
+          setLoading(false);
+          showError("Credenciales inválidas o usuario no confirmado. Revisa tu correo o intenta de nuevo.");
+          return;
+        }
+
+        // Email confirmado del usuario autenticado
+        const userEmail = data.user.email;
+        setLoading(false);
+
+        // Continuar flujo (listas negras + rutas)
+        await postLoginFlow(userEmail);
+
+      } catch (e) {
+        setLoading(false);
+        showError("Error inesperado al iniciar sesión.");
+      } finally {
+        btnLogin.disabled = false;
+      }
+    };
+
+    /* =========================================================
+       11) AUTO-FLOW: si llegamos desde Google (callback),
+           procesamos la sesión y ejecutamos postLoginFlow.
+
+           Nota: tu verificacion_oauth.html parsea hash manual (#access_token=...)
+           :contentReference[oaicite:7]{index=7}
+           Aquí soportamos ambos:
+           - Si Supabase ya detectó sesión: getUser()
+           - Si viene access_token en hash: getUser(accessToken)
+       ========================================================= */
+    (async () => {
+      // Si no hay indicios de callback, no hacemos nada.
+      const hasHash = !!(window.location.hash && window.location.hash.includes("access_token"));
+      const hasCode = !!(window.location.search && window.location.search.includes("code="));
+
+      if (!hasHash && !hasCode) return;
+
+      setLoading(true, "Finalizando inicio de sesión…", "Confirmando tu sesión.");
+      await nextFrame();
+
+      try {
+        // 1) Intento estándar: Supabase ya creó sesión
+        let user = null;
+        const { data: u1, error: e1 } = await supabaseClient.auth.getUser();
+        if (!e1 && u1?.user) user = u1.user;
+
+        // 2) Fallback: si viene access_token en hash (como tu implementación actual)
+        if (!user && hasHash) {
+          const hash = window.location.hash.startsWith("#")
+            ? window.location.hash.substring(1)
+            : window.location.hash;
+          const params = new URLSearchParams(hash);
+          const accessToken = params.get("access_token");
+
+          if (accessToken) {
+            const { data: u2, error: e2 } = await supabaseClient.auth.getUser(accessToken);
+            if (!e2 && u2?.user) user = u2.user;
+          }
+        }
+
+        if (!user || !user.email) {
+          setLoading(false);
+          showError("No pudimos confirmar tu sesión. Intenta nuevamente.");
+          return;
+        }
+
+        setLoading(false);
+
+        // Limpia la URL  para que no repita el flujo al refrescar.
+        // Mantiene el sitio “limpio” sin alterar comportamiento.
+        try {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        } catch (_) {}
+
+        // Ejecuta el flujo post-login (listas negras + redirección)
+        await postLoginFlow(user.email);
+
+      } catch (e) {
+        setLoading(false);
+        showError("Error confirmando tu sesión. Intenta nuevamente.");
+      }
+    })();
+  </script>
+</body>
+</html>

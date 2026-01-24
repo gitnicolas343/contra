@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ContractRed – Inscripción</title>
+  <meta name="description" content="Regístrate en ContractRed para conectar tu empresa con las oportunidades de contratación estatal.">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #6a0dad;
+      --primary-light: #8a2be2;
+      --primary-dark: #4a0072;
+      --primary-soft: #ece0ff;
+      --text-main: #111827;
+      --text-secondary: #4b5563;
+      --nav-text: #333333;
+      --bg-start: #f0f4ff;
+      --bg-end: #e0e8ff;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+      --shadow-xl: 0 12px 48px rgba(106,13,173,0.30);
+      --error: #e11d48;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* HEADER */
+    header {
+      padding: 16px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid transparent;
+      border-image: linear-gradient(90deg, var(--primary), var(--primary-light)) 1;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header img {
+      height: 90px;
+    }
+
+    nav {
+      background: linear-gradient(135deg, var(--white), #fafbff);
+      padding: 10px 18px;
+      border-radius: 16px;
+      display: flex;
+      gap: 8px;
+      border: 1px solid rgba(106, 13, 173, 0.15);
+      box-shadow: var(--shadow-sm);
+    }
+
+    nav a {
+      font-size: 15px;
+      color: var(--nav-text);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 12px;
+      transition: all 0.25s ease;
+    }
+
+    nav a:hover {
+      background: var(--primary-soft);
+      color: var(--primary);
+      box-shadow: 0 4px 16px rgba(106, 13, 173, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* CONTENIDO PRINCIPAL */
+    .section {
+      padding: 48px 24px 64px;
+    }
+
+    .section-narrow {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .hero-card {
+      background: var(--white);
+      padding: 32px 30px 34px;
+      border-radius: 26px;
+      border: 1px solid rgba(148,163,184,0.35);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+
+    /* TARJETA LOGIN / REGISTRO */
+    .social-card {
+      background: linear-gradient(135deg, #f9fafb, #ffffff);
+      border-radius: 24px;
+      padding: 22px 22px 26px;
+      border: 1px solid rgba(148,163,184,0.45);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .social-title {
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .social-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-social {
+      width: 100%;
+      height: 52px;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 18px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+      transition: all 0.25s ease;
+    }
+
+    .btn-social:hover {
+      transform: translateY(-2px);
+      background: #030712;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .social-icon svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+
+    .social-divider {
+      text-align: center;
+      margin: 22px 0 18px;
+      font-size: 13px;
+      color: #6b7280;
+      position: relative;
+    }
+
+    .social-divider::before,
+    .social-divider::after {
+      content: "";
+      width: 38%;
+      height: 1px;
+      background: rgba(148,163,184,0.7);
+      position: absolute;
+      top: 50%;
+    }
+
+    .social-divider::before {
+      left: 0;
+    }
+
+    .social-divider::after {
+      right: 0;
+    }
+
+    /* FORMULARIO */
+    .register-form {
+      margin-top: 4px;
+    }
+
+    .form-row {
+      margin-bottom: 14px;
+    }
+
+    .form-row label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 11px 13px;
+      border-radius: 14px;
+      border: 1px solid #cbd5e1;
+      font-size: 15px;
+      background: #f9fafb;
+      transition: all 0.2s ease;
+    }
+
+    .input-field::placeholder {
+      color: #9ca3af;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(129,140,248,0.4);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      margin-top: 3px;
+    }
+
+    .btn-purple {
+      margin-top: 6px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      color: white;
+      padding: 13px 16px;
+      border-radius: 16px;
+      width: 100%;
+      border: none;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 22px rgba(106,13,173,0.45);
+      transition: all 0.25s ease;
+    }
+
+    .btn-purple:hover {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(106,13,173,0.60);
+    }
+
+    .error-text {
+      color: var(--error);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .form-footnote {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    /* MODAL TÉRMINOS */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 17, 17, 0.65);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px 32px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+      animation: modalShow 0.35s ease;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      font-size: 32px;
+      float: right;
+      cursor: pointer;
+      color: #6a0dad;
+      font-weight: bold;
+      margin-top: -10px;
+    }
+
+    .modal-close:hover {
+      color: #4a0072;
+      transform: scale(1.15);
+    }
+
+    @keyframes modalShow {
+      from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      header {
+        padding: 14px 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .section {
+        padding: 32px 18px 50px;
+      }
+
+      .hero-card {
+        padding: 26px 22px 28px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header img {
+        height: 72px;
+      }
+
+      .hero-title {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Modal Términos -->
+  <div id="modal-terminos" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="cerrar-modal">x</button>
+      <h2>Términos y Condiciones</h2>
+      <p>----</p>
+    </div>
+  </div>
+
+  <header>
+    <a href="/static/index.html">
+      <img src="assets/logo.png" alt="Logo ContractRed">
+    </a>
+
+    <nav>
+      <a href="/static/inscripcion.html">Iniciar sesión</a>
+      <a href="/static/promociones.html">Promociones</a>
+      <a href="/static/ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-narrow">
+        <div class="hero-card">
+          <h1 class="hero-title">Regístrate y comienza</h1>
+          <p class="hero-text">
+            Crea tu cuenta en ContractRed y conecta tu empresa con las oportunidades de contratación estatal en Colombia.
+          </p>
+
+          <div class="social-card">
+            <div class="social-title">Otras formas de iniciar sesión</div>
+
+            <div class="social-list">
+              <!-- Google -->
+              <button class="btn-social" type="button" onclick="continueWithProvider('google')">
+                <span class="social-icon">
+                  <!-- Logo Google -->
+                  <svg viewBox="0 0 24 24">
+                    <path fill="#EA4335" d="M12 10.2v3.6h5c-.2 1.2-.8 2.3-1.7 3.1l2.7 2.1c1.6-1.5 2.6-3.7 2.6-6.2 0-.5 0-.9-.1-1.3H12z"/>
+                    <path fill="#34A853" d="M6.5 14.3c-.3-.8-.5-1.6-.5-2.3s.2-1.6.5-2.3L3.8 7.6A9.9 9.9 0 0 0 2 12c0 1.6.4 3.2 1.1 4.4l3.4-2.1z"/>
+                    <path fill="#4285F4" d="M12 22c2.7 0 5-1 6.6-2.6l-2.7-2.1c-.8.5-1.7.8-2.6.8-2 0-3.8-1.3-4.5-3.1l-3.4 2.1A9.9 9.9 0 0 0 12 22z"/>
+                    <path fill="#FBBC05" d="M12 2C9.1 2 6.5 3.3 4.9 5.4l3.4 2.1A5.8 5.8 0 0 1 12 6c1 0 1.8.3 2.6.8l2.7-2.1A9.9 9.9 0 0 0 12 2z"/>
+                  </svg>
+                </span>
+                <span>Continuar con Google</span>
+              </button>
+
+              <!-- LinkedIn -->
+              <button class="btn-social" type="button" onclick="continueWithProvider('linkedin')">
+                <span class="social-icon">
+                  <!-- Logo LinkedIn -->
+                  <svg viewBox="0 0 24 24" fill="#0A66C2">
+                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5H4.7V24H.22zM8.56 8.5H12.9v2.12h.06c.6-1.1 2.07-2.25 4.27-2.25C22.4 8.37 24 11 24 15.29V24h-4.47v-7.93c0-1.89-.03-4.31-2.63-4.31-2.63 0-3.03 2.05-3.03 4.17V24H9.4z"/>
+                  </svg>
+                </span>
+                <span>Continuar con LinkedIn</span>
+              </button>
+            </div>
+
+            <div class="social-divider">o regístrate con tu correo</div>
+
+            <form class="register-form" onsubmit="return handleRegister(event)">
+              <div class="form-row">
+                <label for="email">Correo electrónico</label>
+                <input class="input-field" type="email" id="email" placeholder="tunombre@empresa.com" required />
+                <div class="error-text" id="error-email"></div>
+              </div>
+
+              <div class="form-row">
+                <label for="password">Contraseña</label>
+                <input class="input-field" type="password" id="password" placeholder="Mínimo 6 caracteres" required />
+                <div class="error-text" id="error-password"></div>
+              </div>
+
+              <div class="form-row">
+                <label for="password2">Repetir contraseña</label>
+                <input class="input-field" type="password" id="password2" placeholder="Escribe de nuevo tu contraseña" required />
+                <div class="error-text" id="error-password2"></div>
+              </div>
+
+              <div class="form-row">
+                <label class="checkbox-row">
+                  <input type="checkbox" id="terms" />
+                  <span>Acepto los términos y condiciones de ContractRed.</span>
+                </label>
+                <div class="error-text" id="error-terms"></div>
+              </div>
+
+              <div class="terms-link">
+                <a href="/static/terminos.html" id="ver-terminos">Leer términos y condiciones</a>
+              </div>
+
+              <button type="submit" class="btn-purple">Crear cuenta y continuar</button>
+
+              <div class="form-footnote">
+                Usaremos tus datos solo para crear tu cuenta y mejorar tu experiencia en ContractRed.
+              </div>
+
+              <div style="text-align:center; margin-top: 14px;">
+                <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 6px;">
+                  ¿Ya tienes cuenta?
+                </p>
+                <button
+                  type="button"
+                  class="btn-purple"
+                  style="width: 100%; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); box-shadow: 0 6px 18px rgba(106, 13, 173, 0.35);"
+                  onclick="window.location.href='/static/login.html'">
+                  Iniciar sesión
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Supabase -->
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL = "https://ndsyaetglshulaqadvzl.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5kc3lhZXRnbHNodWxhcWFkdnpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0Mzk0NzEsImV4cCI6MjA4MDAxNTQ3MX0.Z2URIwgvLfpV6fdOv_fgIS-X-es2Zvlwq7QnB1Oo0Js";
+
+    const API_BASE = window.location.origin; 
+
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    console.log("Supabase cargado:", !!window.supabase);
+
+    // ---------- LOGIN CON GOOGLE ----------
+    async function continueWithProvider(provider) {
+      if (provider === "google") {
+        try {
+          const redirectTo = window.location.origin + "/static/verificacion_oauth.html";
+          console.log("Redirect Google OAuth a:", redirectTo);
+
+          const { data, error } = await supabaseClient.auth.signInWithOAuth({
+            provider: "google",
+            options: { redirectTo },
+          });
+
+          console.log("Resultado signInWithOAuth:", { data, error });
+
+          if (error) {
+            console.error("Error en Google OAuth:", error);
+            alert(
+              "No se pudo iniciar sesión con Google:\n" +
+              (error.message || JSON.stringify(error))
+            );
+          }
+        } catch (err) {
+          console.error("Excepción en Google OAuth:", err);
+          alert(
+            "Error inesperado con Google OAuth (JS):\n" +
+            (err && err.message ? err.message : String(err))
+          );
+        }
+        return;
+      }
+
+      if (provider === "linkedin") {
+        alert("Inicio con LinkedIn estará disponible más adelante. Usa Google o correo por ahora.");
+        return;
+      }
+    }
+
+    // ---------- REGISTRO EMAIL + CONTRASEÑA ----------
+    async function handleRegister(event) {
+      event.preventDefault();
+
+      // Limpiar errores
+      document.getElementById("error-email").textContent = "";
+      document.getElementById("error-password").textContent = "";
+      document.getElementById("error-password2").textContent = "";
+      document.getElementById("error-terms").textContent = "";
+
+      const email = document.getElementById("email").value.trim();
+      const pass1 = document.getElementById("password").value;
+      const pass2 = document.getElementById("password2").value;
+      const terms = document.getElementById("terms").checked;
+
+      let ok = true;
+
+      if (!email.includes("@")) {
+        document.getElementById("error-email").textContent = "Correo inválido.";
+        ok = false;
+      }
+
+      if (pass1.length < 6) {
+        document.getElementById("error-password").textContent =
+          "La contraseña debe tener al menos 6 caracteres.";
+        ok = false;
+      }
+
+      if (pass1 !== pass2) {
+        document.getElementById("error-password2").textContent =
+          "Las contraseñas no coinciden.";
+        ok = false;
+      }
+
+      if (!terms) {
+        document.getElementById("error-terms").textContent = "Debes aceptar los términos.";
+        ok = false;
+      }
+
+      if (!ok) return false;
+
+      try {
+        // 1) Consultar en tu tabla 'usuarios' si el correo YA existe
+        let yaRegistrado = false;
+
+        try {
+          const resCheck = await fetch(
+            API_BASE + "/usuarios/existe?email=" + encodeURIComponent(email)
+          );
+
+          if (resCheck.ok) {
+            const jsonCheck = await resCheck.json();
+            yaRegistrado = !!jsonCheck.existe;
+            console.log("Resultado /usuarios/existe:", jsonCheck);
+          } else {
+            console.warn("No se pudo comprobar /usuarios/existe. Status:", resCheck.status);
+          }
+        } catch (errCheck) {
+          console.warn("Error consultando /usuarios/existe:", errCheck);
+        }
+
+        // Caso A: YA existe en tu tabla usuarios → directo a login
+        if (yaRegistrado) {
+          alert(
+            "Este correo ya tiene una cuenta en ContractRed.\n" +
+            "Te llevaremos al inicio de sesión."
+          );
+          window.location.href = "/static/login.html";
+          return false;
+        }
+
+        // Caso B: NO existe en tu tabla → intentamos crear usuario en Supabase Auth
+        const redirectTo = window.location.origin + "/static/verificacion_email.html";
+        console.log("Llamando signUp con redirectTo:", redirectTo);
+
+        const { data, error } = await supabaseClient.auth.signUp({
+          email,
+          password: pass1,
+          options: {
+            emailRedirectTo: redirectTo,
+          },
+        });
+
+        console.log("Resultado signUp:", { data, error });
+
+        if (error) {
+          const msg  = (error.message || "").toLowerCase();
+          const code = error.code || "";
+
+          // 🟣 Caso especial: usuario YA existe en Auth pero (probablemente) sin verificar
+          if (
+            code === "user_already_exists" ||
+            msg.includes("user already registered") ||
+            msg.includes("already registered")
+          ) {
+            try {
+              console.log("Usuario ya existe en Auth. Reenviando correo de verificación...");
+
+              const { data: resendData, error: resendError } =
+                await supabaseClient.auth.resend({
+                  type: "signup",
+                  email: email,
+                });
+
+              console.log("Resultado auth.resend:", { resendData, resendError });
+
+              if (resendError) {
+                alert(
+                  "Tu correo ya tenía una cuenta creada, pero no pudimos reenviar el enlace de verificación.\n\n" +
+                  "Intenta más tarde o usa la opción de recuperar cuenta desde el login."
+                );
+                return false;
+              }
+
+              alert(
+                "Este correo ya tenía una cuenta pendiente de verificación.\n" +
+                "Te hemos reenviado el enlace de verificación. Revisa bandeja de entrada y spam."
+              );
+              return false;
+
+            } catch (errResend) {
+              console.error("Error en auth.resend:", errResend);
+              alert(
+                "No pudimos reenviar el correo de verificación.\n\n" +
+                "Intenta más tarde o usa la opción de recuperar cuenta desde el login."
+              );
+              return false;
+            }
+          }
+
+          // Otros errores de Supabase
+          alert(
+            "debes esperar antes de solicitar un nuevo correo\n\n" +
+            (error.message || JSON.stringify(error, null, 2))
+          );
+          return false;
+        }
+
+        // Caso C: Usuario nuevo → correo de verificación enviado correctamente
+        alert(
+          "Hemos enviado un enlace de verificación a tu correo.\n" +
+          "Revisa bandeja de entrada y spam para continuar."
+        );
+
+      } catch (err) {
+        console.error("Excepción en handleRegister:", err);
+        alert(
+          "Error inesperado creando la cuenta (JS):\n\n" +
+          (err && err.message ? err.message : String(err))
+        );
+      }
+
+      return false;
+    }
+
+    // ---------- MODAL TÉRMINOS ----------
+    document.getElementById("ver-terminos").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.getElementById("modal-terminos").style.display = "flex";
+    });
+
+    document.getElementById("cerrar-modal").addEventListener("click", function () {
+      document.getElementById("modal-terminos").style.display = "none";
+    });
+
+    document.getElementById("modal-terminos").addEventListener("click", function (e) {
+      if (e.target === this) {
+        this.style.display = "none";
+      }
+    });
+  </script>
+
+
+</body>
+</html>

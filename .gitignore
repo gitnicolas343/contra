@@ -1,2 +1,20 @@
-# Local Netlify folder
-.netlify
+# Entornos / caches
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# Secrets
+.env
+backend/.env
+
+# OS / IDE
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
