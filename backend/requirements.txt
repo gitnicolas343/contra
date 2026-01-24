@@ -3,7 +3,7 @@ uvicorn[standard]==0.38.0
 python-dotenv==1.2.1
 supabase==2.24.0
 requests==2.32.3
-pandas==2.2.4
+pandas
 pydantic>=2
 
 
