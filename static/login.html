@@ -649,10 +649,14 @@
       const resolved = await resolveUsuarioIdByEmail(email);
 
       if (!resolved || !resolved.ok || !resolved.usuario_id) {
+        // No existe en tabla usuarios -> verificación para crear/registrar en tu sistema interno
+        localStorage.removeItem("usuario_id");
+        localStorage.setItem("pendiente_verificacion", "1");
         setLoading(false);
-        showError("No encontramos tu usuario interno. Si es tu primera vez, regístrate en Inscripción.");
+        window.location.href = "/static/verificacion.html";
         return;
       }
+
 
       const usuarioId = resolved.usuario_id;
       localStorage.setItem("usuario_id", usuarioId);
