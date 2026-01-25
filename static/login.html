@@ -542,12 +542,26 @@
       return { ok, usuario_id: json.usuario_id || null, tiene_detalle: !!json.tiene_detalle };
     }
 
+    // (1.1) Verifica si usuarios_detalle existe y está completo
+    // Requiere endpoint /usuarios/detalle_estado (recomendado).
+    // Si el endpoint no existe o falla, por seguridad redirigimos a verificación.
+    async function detalleEstado(usuarioId) {
+      const url = API_BASE + "/usuarios/detalle_estado?usuario_id=" + encodeURIComponent(usuarioId);
+      try {
+        const res = await fetch(url, { method: "GET", headers: { Accept: "application/json" } });
+        const json = await res.json().catch(() => ({}));
+        return { ok: res.ok, existe: !!json.existe, completo: !!json.completo };
+      } catch (_) {
+        return { ok: false, existe: false, completo: false };
+      }
+    }
+
     // (2) Revalida listas negras en tiempo real
     async function consultarListasNegras(usuarioId) {
       const url = API_BASE + "/listas_negras/resumen?usuario_id=" + encodeURIComponent(usuarioId);
       const res = await fetch(url, { method: "GET", headers: { Accept: "application/json" } });
       const json = await res.json().catch(() => ({}));
-      return { ok: res.ok, data: json };
+      return { ok: res.ok, status: res.status, data: json };
     }
 
     // (3) Renderiza el modal de sanciones con tabla
@@ -648,31 +662,57 @@
 
       const resolved = await resolveUsuarioIdByEmail(email);
 
+      // 1) Si NO existe en tabla usuarios -> verificación
       if (!resolved || !resolved.ok || !resolved.usuario_id) {
-        // No existe en tabla usuarios -> verificación para crear/registrar en tu sistema interno
-        localStorage.removeItem("usuario_id");
-        localStorage.setItem("pendiente_verificacion", "1");
-        setLoading(false);
+        // guardamos señales para verificacion.html (sin cambiar UI)
+        try { localStorage.removeItem("usuario_id"); } catch (_) {}
+        try { localStorage.setItem("pendiente_verificacion", "1"); } catch (_) {}
+        try { localStorage.setItem("pending_email", email); } catch (_) {}
+
+        setLoading(true, "Falta un paso…", "Necesitamos completar tu registro en ContractRed para continuar.");
+        await nextFrame();
         window.location.href = "/static/verificacion.html";
         return;
       }
 
-
       const usuarioId = resolved.usuario_id;
-      localStorage.setItem("usuario_id", usuarioId);
+      try { localStorage.setItem("usuario_id", usuarioId); } catch (_) {}
 
+      // 2) Si NO tiene fila en usuarios_detalle -> verificación
       if (!resolved.tiene_detalle) {
+        try { localStorage.setItem("pendiente_verificacion", "1"); } catch (_) {}
         setLoading(true, "Falta un paso…", "Necesitamos tus datos (documento, NIT, empresa) para validar listas negras.");
         await nextFrame();
         window.location.href = "/static/verificacion.html";
         return;
       }
 
+      // 3) Si tiene usuarios_detalle, pero está INCOMPLETO -> verificación
+      setLoading(true, "Validando perfil…", "Verificando que tu información esté completa.");
+      await nextFrame();
+
+      const det = await detalleEstado(usuarioId);
+      if (!det.ok || !det.existe || !det.completo) {
+        try { localStorage.setItem("pendiente_verificacion", "1"); } catch (_) {}
+        setLoading(true, "Falta un paso…", "Necesitamos completar o actualizar tus datos para continuar.");
+        await nextFrame();
+        window.location.href = "/static/verificacion.html";
+        return;
+      }
+
+      // 4) Consultar listas negras en cada login
       setLoading(true, "Consultando listas negras…", "Validando Procuraduría, SECOP I y SECOP II. No cierres esta ventana.");
       await nextFrame();
 
       const listas = await consultarListasNegras(usuarioId);
       setLoading(false);
+
+      // Si backend dice que falta detalle -> verificación (consistencia)
+      if (!listas.ok && listas.status === 404) {
+        try { localStorage.setItem("pendiente_verificacion", "1"); } catch (_) {}
+        window.location.href = "/static/verificacion.html";
+        return;
+      }
 
       if (!listas.ok) {
         showError("Ingresaste correctamente, pero no pudimos validar listas negras en este momento. Intenta más tarde.");
@@ -732,6 +772,12 @@
         }
 
         const userEmail = data.user.email;
+
+        // Guardar contexto (para verificacion.html si hace falta)
+        try { localStorage.setItem("auth_id", data.user.id); } catch (_) {}
+        try { localStorage.setItem("provider", "propio"); } catch (_) {}
+        try { localStorage.setItem("pending_email", userEmail || email); } catch (_) {}
+
         setLoading(false);
 
         await postLoginFlow(userEmail);
@@ -821,8 +867,14 @@
           return;
         }
 
+        // Guardar contexto (para verificacion.html si hace falta)
+        try { localStorage.setItem("auth_id", user.id); } catch (_) {}
+        try { localStorage.setItem("provider", "google"); } catch (_) {}
+        try { localStorage.setItem("pending_email", user.email); } catch (_) {}
+
         setLoading(false);
 
+        // Limpia URL para evitar re-ejecutar el flujo al refrescar
         try {
           window.history.replaceState({}, document.title, window.location.pathname);
         } catch (_) {}

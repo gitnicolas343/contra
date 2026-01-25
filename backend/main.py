@@ -148,45 +148,45 @@ class ResumenListasNegras(BaseModel):
 
 # --------- CONSULTAR SI YA EXISTE UN USUARIO POR CORREO ---------
 
-@app.get("/usuarios/existe")
-def usuario_existe(email: str):
-    """
-    Devuelve {"existe": true/false} según si hay un registro en la tabla 'usuarios'
-    con ese correo. OJO: en tu tabla la columna se llama 'correo', no 'email'.
-    """
-    try:
-        resp = (
-            supabase
-            .table("usuarios")
-            .select("id")
-            .eq("correo", email)
-            .limit(1)
-            .execute()
-        )
-
-        existe = bool(resp.data)  # True si hay al menos una fila
-        if not existe:
-            return {"existe":False }
-
-        Usuario_id = resp.data[0]["id"]
-
-        detalle = (
-            supabase
-            .table("usuarios_detalle")
-            .select("usuario_id")
-            .eq("usuario_id",Usuario_id)
-            .limit(1)
-            .execute()
-        )
-        return {
-            "existe": True,
-            "usuario_id": usuario_id,
-            "tiene_detalle": bool(detalle.data),
-        }
-    except Exception as e:
-        print("Error en /usuarios/existe:", e)
-        # En error, devolvemos que no sabemos, pero no rompemos el frontend
-        return {"existe": False, "error": str(e)}
+#@app.get("/usuarios/existe")
+#def usuario_existe(email: str):
+#    """
+#    Devuelve {"existe": true/false} según si hay un registro en la tabla 'usuarios'
+#    con ese correo. OJO: en tu tabla la columna se llama 'correo', no 'email'.
+#    """
+#    try:
+#        resp = (
+#            supabase
+#            .table("usuarios")
+#            .select("id")
+#            .eq("correo", email)
+#            .limit(1)
+#            .execute()
+#        )
+#
+#        existe = bool(resp.data)  # True si hay al menos una fila
+#        if not existe:
+#            return {"existe":False }
+#
+#        Usuario_id = resp.data[0]["id"]
+#
+#        detalle = (
+#            supabase
+#            .table("usuarios_detalle")
+#            .select("usuario_id")
+#            .eq("usuario_id",Usuario_id)
+#            .limit(1)
+#            .execute()
+#        )
+#        return {
+#            "existe": True,
+#            "usuario_id": usuario_id,
+#            "tiene_detalle": bool(detalle.data),
+#        }
+#    except Exception as e:
+#        print("Error en /usuarios/existe:", e)
+#        # En error, devolvemos que no sabemos, pero no rompemos el frontend
+#        return {"existe": False, "error": str(e)}
 
 
 
@@ -481,15 +481,35 @@ def usuario_existe(email: str):
         print("Error en /usuarios/existe:", e)
         return {"existe": False, "usuario_id": None, "tiene_detalle": False, "error": str(e)}
 
-@app.get("/usuarios/por_correo")
-def usuario_por_correo(email: str):
+@app.get("/usuarios/detalle_estado")
+def detalle_estado(usuario_id: UUID):
     """
-    Respuesta pensada para login.html:
-      { "ok": bool, "usuario_id": str|None, "tiene_detalle": bool, "motivo": str|None }
+    Devuelve:
+      { "existe": bool, "completo": bool }
+    Completo se evalúa con los NOT NULL que definiste:
+      nombre_completo, tipo_documento, numero_documento, empresa
+    (telefono es opcional en tu DDL)
     """
-    r = usuario_existe(email)  # reutiliza lógica
+    try:
+        resp = (
+            supabase
+            .table("usuarios_detalle")
+            .select("nombre_completo,tipo_documento,numero_documento,empresa,telefono")
+            .eq("usuario_id", str(usuario_id))
+            .limit(1)
+            .execute()
+        )
 
-    if not r.get("existe"):
-        return {"ok": False, "usuario_id": None, "tiene_detalle": False, "motivo": "no_existe"}
+        if not resp.data:
+            return {"existe": False, "completo": False}
 
-    return {"ok": True, "usuario_id": r["usuario_id"], "tiene_detalle": r["tiene_detalle"]}
+        fila = resp.data[0] or {}
+
+        requeridos = ["nombre_completo", "tipo_documento", "numero_documento", "empresa"]
+        completo = all((fila.get(k) or "").strip() for k in requeridos)
+
+        return {"existe": True, "completo": bool(completo)}
+
+    except Exception as e:
+        print("Error en /usuarios/detalle_estado:", e)
+        return {"existe": False, "completo": False, "error": str(e)}
