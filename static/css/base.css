@@ -80,6 +80,10 @@ a { color: inherit; }
   50% { box-shadow: var(--glow); }
 }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.001ms !important;
