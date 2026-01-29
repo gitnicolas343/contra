@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 COPY backend/requirements.txt /app/backend/requirements.txt
 RUN pip install --no-cache-dir -r /app/backend/requirements.txt
 
-# Copiar backend y static (tal como en tu estructura)
+# Copiar backend y static 
 COPY backend/ /app/backend/
 COPY static/ /app/static/
 
