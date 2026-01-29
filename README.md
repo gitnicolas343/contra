@@ -4,45 +4,71 @@ Aplicacion web con backend FastAPI y frontend estatico. Gestiona registro de usu
 
 ## Tecnologias
 - Python 3.11
-- FastAPI
-- Uvicorn
+- FastAPI + Uvicorn
 - Supabase (Postgres + API)
-- pandas
-- requests
+- pandas, requests
 - python-dotenv
 - Docker
 
 ## Servicios externos
-- Supabase: tabla `usuarios` y `usuarios_detalle`
+- Supabase: tablas `usuarios` y `usuarios_detalle`
 - datos.gov.co (Socrata):
   - Procuraduria (inhabilidades)
   - SECOP I (multas)
   - SECOP II (multas)
 
-## Estructura
+## Mapa del proyecto
 ```
 backend/
   app/
-    main.py               # FastAPI app, CORS, static mount
-    api/routes/           # Endpoints
-    models/               # Pydantic schemas
-    services/             # Logica de negocio
+    api/routes/           # Endpoints REST
     clients/              # Clientes externos (Supabase)
-    utils/                # Normalizacion y helpers
     core/                 # Configuracion y env
-  main.py                 # Wrapper (compatibilidad con uvicorn main:app)
+    models/               # Schemas Pydantic
+    services/             # Logica de negocio
+    utils/                # Normalizacion y helpers
+    main.py               # FastAPI app
+  main.py                 # Wrapper para uvicorn main:app
   requirements.txt
 static/
-  *.html
+  css/
+    base.css              # Estilos globales + animaciones
+    auth.css              # Header/nav y layout comun en auth
+    home.css              # Estilos especificos de index
+    login.css             # Estilos de login
+    inscripcion.css       # Estilos de inscripcion
+    verificacion.css      # Estilos de verificacion
+    verificacion_email.css
+    verificacion_oauth.css
+    reset_password.css
+  js/
+    base.js               # Helpers compartidos (placeholder)
+    login.js
+    inscripcion.js
+    verificacion.js
+    verificacion_email.js
+    verificacion_oauth.js
+    reset_password.js
   assets/
+    img/
+      logo.png
+      robot.png
+  index.html
+  login.html
+  inscripcion.html
+  verificacion.html
+  verificacion_email.html
+  verificacion_oauth.html
+  reset_password.html
 Dockerfile
+README.md
 ```
 
 ## Variables de entorno
 Archivo: `backend/.env`
 - `SUPABASE_URL`
 - `SUPABASE_KEY`
-- `SOCRATA_APP_TOKEN` (opcional, usa token por defecto si no se define)
+- `SOCRATA_APP_TOKEN` (opcional)
 
 ## Ejecutar en local
 ```bash
@@ -53,7 +79,7 @@ pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 10000 --reload
 ```
 
-Luego abrir `http://localhost:10000`.
+Abrir `http://localhost:10000`.
 
 ## Ejecutar con Docker
 ```bash
@@ -69,9 +95,9 @@ docker run --rm -p 10000:10000 --env-file backend/.env contractred
 - `GET /usuarios/existe?email=...`
 - `GET /usuarios/detalle_estado?usuario_id=...`
 - `POST /completar_registro`
-  - Body: datos de perfil y contrato
 - `GET /listas_negras/resumen?usuario_id=...`
 
 ## Notas
-- El frontend esta en `static/` y consume los endpoints anteriores via `fetch`.
-- Los endpoints y rutas no cambiaron; se reorganizo el codigo para mantener funcionalidad.
+- El frontend consume los endpoints via `fetch`.
+- Los estilos estan separados en `static/css` y los scripts en `static/js`.
+- La paleta de color base se mantiene en `base.css`.

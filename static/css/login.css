@@ -12,8 +12,14 @@ main {
   padding: 28px 26px;
   border: 1px solid rgba(148,163,184,0.4);
   box-shadow: 0 12px 40px rgba(15,23,42,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.7s ease both;
 }
 
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 52px rgba(15,23,42,0.22);
+}
 .title {
   font-size: 26px;
   font-weight: 800;
@@ -37,15 +43,19 @@ main {
   color: var(--text-main);
 }
 
-/* ===== Social card block ===== */
 .social-card {
   background: linear-gradient(135deg, #f9fafb, #ffffff);
   border-radius: 24px;
   padding: 22px 22px 26px;
   border: 1px solid rgba(148,163,184,0.45);
   box-shadow: var(--shadow-lg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.social-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 48px rgba(15,23,42,0.22);
+}
 .social-title {
   text-align: center;
   font-size: 15px;
@@ -60,7 +70,6 @@ main {
   gap: 10px;
 }
 
-/* ===== BOTÓN SOCIAL (color oscuro como tu captura) ===== */
 .btn-social {
   width: 100%;
   height: 52px;
@@ -87,6 +96,11 @@ main {
   transform: translateY(-2px);
   background: #030712;
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+.btn-social:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.28);
 }
 
 /* Icono (círculo blanco) */
@@ -168,10 +182,11 @@ main {
   color: #fff;
   background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
   box-shadow: 0 14px 30px rgba(106,13,173,0.28);
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 .btn-primary:hover { transform: translateY(-1px); }
 .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.btn-primary:active { transform: translateY(0); box-shadow: 0 8px 20px rgba(106,13,173,0.25); }
 
 .hint {
   margin-top: 20px;
@@ -213,6 +228,7 @@ main {
   border: 1px solid rgba(148,163,184,0.4);
   max-height: 86vh;
   overflow: auto;
+  animation: fadeUp 0.35s ease both;
 }
 
 .modal-title { margin: 4px 0 6px; font-size: 18px; font-weight: 900; }

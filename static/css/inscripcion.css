@@ -1,5 +1,3 @@
-/* HEADER */
-/* CONTENIDO PRINCIPAL */
 .section {
   padding: 48px 24px 64px;
 }
@@ -15,8 +13,14 @@
   border-radius: 26px;
   border: 1px solid rgba(148,163,184,0.35);
   box-shadow: var(--shadow-xl);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.7s ease both;
 }
 
+.hero-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 52px rgba(15,23,42,0.22);
+}
 .hero-title {
   font-size: 32px;
   font-weight: 800;
@@ -32,15 +36,19 @@
   margin-bottom: 18px;
 }
 
-/* TARJETA LOGIN / REGISTRO */
 .social-card {
   background: linear-gradient(135deg, #f9fafb, #ffffff);
   border-radius: 24px;
   padding: 22px 22px 26px;
   border: 1px solid rgba(148,163,184,0.45);
   box-shadow: var(--shadow-lg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.social-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 48px rgba(15,23,42,0.22);
+}
 .social-title {
   text-align: center;
   font-size: 15px;
@@ -78,6 +86,11 @@
   transform: translateY(-2px);
   background: #030712;
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+.btn-social:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.28);
 }
 
 .social-icon {

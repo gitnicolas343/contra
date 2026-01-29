@@ -1,23 +1,16 @@
-/* =========================================================
-3) CONFIGURACIÓN (ajusta SOLO estos 3 valores)
-========================================================= */
-
+// Configuración local
 const SUPABASE_URL = "https://ndsyaetglshulaqadvzl.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5kc3lhZXRnbHNodWxhcWFkdnpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0Mzk0NzEsImV4cCI6MjA4MDAxNTQ3MX0.Z2URIwgvLfpV6fdOv_fgIS-X-es2Zvlwq7QnB1Oo0Js";
 
 // Backend API
 const API_BASE = window.location.origin;
 
-/* =========================================================
-4) INICIALIZACIÓN SUPABASE
-========================================================= */
+// Supabase client
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: { detectSessionInUrl: true },
 });
 
-/* =========================================================
-5) REFERENCIAS DOM
-========================================================= */
+// DOM refs
 const btnGoogle = document.getElementById("btnGoogle");
 const btnLogin = document.getElementById("btnLogin");
 const emailEl = document.getElementById("email");
@@ -35,9 +28,7 @@ const modalLoading = document.getElementById("modal-loading");
 const loadingTitle = document.getElementById("loading-title");
 const loadingText = document.getElementById("loading-text");
 
-/* =========================================================
-6) HELPERS UI
-========================================================= */
+// Helpers UI
 function showError(msg) {
   errorBox.textContent = msg;
   errorBox.style.display = "block";
@@ -58,25 +49,18 @@ function nextFrame() {
   return new Promise((resolve) => requestAnimationFrame(() => resolve()));
 }
 
-/* =========================================================
-7) HELPERS “negocio”
-========================================================= */
-
-// (1) Resuelve usuario_id interno desde tu backend
+// Helpers de API
 async function resolveUsuarioIdByEmail(email) {
   const url = API_BASE + "/usuarios/existe?email=" + encodeURIComponent(email);
   const res = await fetch(url, { method: "GET", headers: { Accept: "application/json" } });
   const json = await res.json().catch(() => ({}));
 
-  // Normaliza a la forma que usa tu flujo:
-  // { ok, usuario_id, tiene_detalle }
+  // Normaliza la respuesta del backend
   const ok = !!json.existe;
   return { ok, usuario_id: json.usuario_id || null, tiene_detalle: !!json.tiene_detalle };
 }
 
-// (1.1) Verifica si usuarios_detalle existe y está completo
-// Requiere endpoint /usuarios/detalle_estado (recomendado).
-// Si el endpoint no existe o falla, por seguridad redirigimos a verificación.
+// Verifica si usuarios_detalle existe y está completo
 async function detalleEstado(usuarioId) {
   const url = API_BASE + "/usuarios/detalle_estado?usuario_id=" + encodeURIComponent(usuarioId);
   try {
@@ -88,7 +72,7 @@ async function detalleEstado(usuarioId) {
   }
 }
 
-// (2) Revalida listas negras en tiempo real
+// Revalida listas negras en tiempo real
 async function consultarListasNegras(usuarioId) {
   const url = API_BASE + "/listas_negras/resumen?usuario_id=" + encodeURIComponent(usuarioId);
   const res = await fetch(url, { method: "GET", headers: { Accept: "application/json" } });
@@ -96,7 +80,7 @@ async function consultarListasNegras(usuarioId) {
   return { ok: res.ok, status: res.status, data: json };
 }
 
-// (3) Renderiza el modal de sanciones con tabla
+// Renderiza el modal de sanciones con tabla
 function showListasModal(resumenListas) {
   const estaEnListaNegra = !!(resumenListas && resumenListas.en_lista_negra);
 
@@ -183,9 +167,7 @@ function showListasModal(resumenListas) {
   };
 }
 
-/* =========================================================
-8) FLUJO PRINCIPAL POST-LOGIN
-========================================================= */
+// Flujo principal post-login
 async function postLoginFlow(email) {
   clearError();
 
@@ -254,9 +236,7 @@ async function postLoginFlow(email) {
   showListasModal(listas.data);
 }
 
-/* =========================================================
-9) EVENTO: Login con Google
-========================================================= */
+// Evento: Login con Google
 btnGoogle.onclick = async () => {
   clearError();
 
@@ -276,9 +256,7 @@ btnGoogle.onclick = async () => {
   }
 };
 
-/* =========================================================
-10) EVENTO: Login con correo/contraseña
-========================================================= */
+// Evento: Login con correo/contraseña
 btnLogin.onclick = async () => {
   clearError();
 
@@ -322,9 +300,7 @@ btnLogin.onclick = async () => {
   }
 };
 
-/* =========================================================
-10.5) RECUPERAR CONTRASEÑA (básico)
-========================================================= */
+// Recuperar contraseña
 forgotLink.onclick = async (e) => {
   e.preventDefault();
   clearError();
@@ -362,9 +338,7 @@ forgotLink.onclick = async (e) => {
   }
 };
 
-/* =========================================================
-11) AUTO-FLOW: callback Google -> postLoginFlow
-========================================================= */
+// Auto-flow: callback Google -> postLoginFlow
 (async () => {
   const hasHash = !!(window.location.hash && window.location.hash.includes("access_token"));
   const hasCode = !!(window.location.search && window.location.search.includes("code="));

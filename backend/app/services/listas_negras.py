@@ -8,11 +8,7 @@ import requests
 from app.core.config import SOCRATA_APP_TOKEN
 from app.utils.normalizacion import normalizar_documento, normalizar_nombre
 
-# ============================================================
 # Utilities
-# ============================================================
-
-
 def _json_safe(value: Any) -> Any:
     """Convert NaN/NaT/inf to None and force JSON-safe types."""
     if value is None:
@@ -66,10 +62,7 @@ def _clean_sancion_dict(data: Dict[str, Any]) -> Dict[str, Any]:
     return {key: _json_safe(val) for key, val in data.items()}
 
 
-# ============================================================
 # SODA / SODA3 config
-# ============================================================
-
 CSV_PROC_URL = "https://www.datos.gov.co/api/v3/views/iaeu-rcn6/query.csv"
 CSV_SECOP1_URL = "https://www.datos.gov.co/api/v3/views/4n4q-k399/query.csv"
 CSV_SECOP2_URL = "https://www.datos.gov.co/api/v3/views/it5q-hg94/query.csv"
@@ -104,11 +97,7 @@ def _cargar_todo_soda3(base_url: str, limite: int = 50000) -> pd.DataFrame:
         return pd.DataFrame()
 
 
-# ============================================================
 # Queries by source
-# ============================================================
-
-
 def consultar_procuraduria_por_doc(doc_normalizado: str, limite: int = 50000) -> pd.DataFrame:
     """Inhabilidades de Procuraduria por numero_identificacion."""
     if not doc_normalizado:
@@ -220,11 +209,7 @@ def consultar_secop2_por_nombre(nombre_empresa: str, limite: int = 50000) -> pd.
     return df_filtrado
 
 
-# ============================================================
 # Unified API
-# ============================================================
-
-
 def consultar_listas_negras(
     numero_documento: Optional[str],
     nit_empresa: Optional[str],

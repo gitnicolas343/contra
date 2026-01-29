@@ -21,6 +21,34 @@ body {
   background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
   background-attachment: fixed;
   min-height: 100vh;
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+  animation: driftSlow 18s ease-in-out infinite;
+}
+
+body::before {
+  top: -120px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(106,13,173,0.3) 0%, transparent 70%);
+}
+
+body::after {
+  bottom: -140px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(138,43,226,0.3) 0%, transparent 70%);
+  animation-delay: -8s;
 }
 
 header {
@@ -36,9 +64,24 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-header img { height: 90px; }
+header:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+header img {
+  height: 90px;
+  filter: drop-shadow(0 6px 14px rgba(106,13,173,0.25));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+header img:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: drop-shadow(0 10px 22px rgba(106,13,173,0.4));
+}
 
 nav {
   background: linear-gradient(135deg, var(--white), #fafbff);
@@ -48,6 +91,7 @@ nav {
   gap: 8px;
   border: 1px solid rgba(106, 13, 173, 0.15);
   box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 nav a {
@@ -63,6 +107,22 @@ nav a {
 nav a:hover {
   background: var(--primary-soft);
   color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(106,13,173,0.2);
+}
+
+header,
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(148,163,184,0.4);
+  animation: fadeUp 0.7s ease both;
 }
 
 @media (max-width: 900px) {

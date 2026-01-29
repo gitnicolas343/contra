@@ -7,7 +7,7 @@ const API_BASE = window.location.origin;
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 console.log("Supabase cargado:", !!window.supabase);
 
-// ---------- LOGIN CON GOOGLE ----------
+// Login con proveedor OAuth
 async function continueWithProvider(provider) {
   if (provider === "google") {
     try {
@@ -44,7 +44,7 @@ async function continueWithProvider(provider) {
   }
 }
 
-// ---------- REGISTRO EMAIL + CONTRASEÑA ----------
+// Registro con correo y contraseña
 async function handleRegister(event) {
   event.preventDefault();
 
@@ -199,7 +199,7 @@ async function handleRegister(event) {
   return false;
 }
 
-// ---------- MODAL TÉRMINOS ----------
+// Modal de términos y condiciones
 document.getElementById("ver-terminos").addEventListener("click", function (e) {
   e.preventDefault();
   document.getElementById("modal-terminos").style.display = "flex";
