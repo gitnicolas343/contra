@@ -125,6 +125,108 @@ main {
   animation: fadeUp 0.7s ease both;
 }
 
+/* Buttons + inputs (shared visual system) */
+.btn,
+.btn-primary,
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px 14px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+  box-shadow: 0 14px 30px rgba(106,13,173,0.28);
+}
+
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); box-shadow: 0 8px 20px rgba(106,13,173,0.25); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.btn-social {
+  width: 100%;
+  height: 52px;
+  padding: 0 18px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+  border: 1px solid rgba(106,13,173,0.35);
+  box-shadow: 0 10px 26px rgba(106,13,173,0.35);
+}
+
+.btn-social:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(106,13,173,0.45);
+}
+
+.btn-social:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 20px rgba(106,13,173,0.3);
+}
+
+.btn-social .social-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 14px rgba(15,23,42,0.18);
+}
+
+.btn-social .social-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: #111827;
+}
+
+.btn-purple {
+  width: 100%;
+  padding: 12px 14px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+  box-shadow: 0 14px 30px rgba(106,13,173,0.28);
+}
+
+.btn-purple:hover { transform: translateY(-1px); }
+.btn-purple:active { transform: translateY(0); box-shadow: 0 8px 20px rgba(106,13,173,0.25); }
+
+.input-field,
+.input {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input-field::placeholder,
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input-field:focus,
+.input:focus {
+  border-color: rgba(106,13,173,0.35);
+  box-shadow: 0 0 0 4px rgba(106,13,173,0.10);
+  background: #ffffff;
+}
+
 @media (max-width: 900px) {
   header {
     padding: 14px 18px;
