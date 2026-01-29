@@ -17,6 +17,13 @@ Aplicacion web con backend FastAPI y frontend estatico. Gestiona registro de usu
   - SECOP I (multas)
   - SECOP II (multas)
 
+## Documentacion
+- `docs/README.md`
+- `docs/PROJECT_MAP.md`
+- `docs/FRONTEND_GUIDE.md`
+- `docs/BACKEND_GUIDE.md`
+- `docs/CONTRIBUTING.md`
+
 ## Mapa del proyecto
 ```
 backend/
