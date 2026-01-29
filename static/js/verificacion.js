@@ -268,7 +268,7 @@ async function handleVerificacion(event) {
       setLoading(true);
       await nextFrame();
 
-      window.location.href = estaEnListaNegra ? "/static/ayuda.html" : "/static/lobby.html";
+      window.location.href = estaEnListaNegra ? "/static/ayuda.html" : "/static/dashboard_demo.html";
     };
 
     return false;

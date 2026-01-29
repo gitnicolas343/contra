@@ -163,7 +163,7 @@ function showListasModal(resumenListas) {
     modalListas.style.display = "none";
     setLoading(true, "Cargando…", "Estamos preparando tu panel. Por favor espera.");
     await nextFrame();
-    window.location.href = estaEnListaNegra ? "/static/ayuda.html" : "/static/lobby.html";
+    window.location.href = estaEnListaNegra ? "/static/ayuda.html" : "/static/dashboard_demo.html";
   };
 }
 

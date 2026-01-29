@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ContratRed | Dashboard Demo</title>
+  <link rel="stylesheet" href="/static/css/base.css" />
+  <link rel="stylesheet" href="/static/css/auth.css" />
+  <link rel="stylesheet" href="/static/css/dashboard_demo.css" />
+</head>
+<body>
+  <div class="dash-bg"></div>
+
+  <header class="dash-topbar">
+    <div class="brand">
+      <div class="brand-mark">?</div>
+      <span>ContratRed</span>
+    </div>
+    <nav class="dash-nav">
+      <a class="active" href="#">Dashboard</a>
+      <a href="#">Contratos</a>
+      <a href="#">Reportes</a>
+      <a href="#">Ayuda</a>
+    </nav>
+    <div class="user-chip">
+      <span class="chip-dot"></span>
+      <span>saadi nicolas mendoza</span>
+      <span class="chip-pill">Gratis</span>
+    </div>
+  </header>
+
+  <main class="dash-wrap">
+    <section class="hero">
+      <div>
+        <h1>Dashboard</h1>
+        <p>Bienvenido, saadi nicolas mendoza. Aqui tienes un resumen de la actividad de contratacion publica.</p>
+      </div>
+      <button class="btn-primary">Crear reporte</button>
+    </section>
+
+    <section class="plan">
+      <div>
+        <span class="plan-tag">Plan Estandar Activo</span>
+        <p>Actualiza a Premium para analisis avanzados y reportes personalizados.</p>
+      </div>
+      <button class="btn-gold">Actualizar plan</button>
+    </section>
+
+    <section class="kpis">
+      <div class="kpi-card">
+        <div class="kpi-title">Contratos activos</div>
+        <div class="kpi-value">1,247</div>
+        <div class="kpi-note up">+12% vs mes anterior</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Valor total</div>
+        <div class="kpi-value">$45.2M</div>
+        <div class="kpi-note up">+8% vs mes anterior</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Entidades</div>
+        <div class="kpi-value">89</div>
+        <div class="kpi-note up">+3% vs mes anterior</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Nuevos hoy</div>
+        <div class="kpi-value">23</div>
+        <div class="kpi-note warn">+15% vs mes anterior</div>
+      </div>
+    </section>
+
+    <section class="filters">
+      <div class="search">
+        <input class="input-field" placeholder="Buscar contratos, entidades..." />
+      </div>
+      <select class="input-field select">
+        <option>Todas las categorias</option>
+        <option>Infraestructura</option>
+        <option>Salud</option>
+        <option>Tecnologia</option>
+      </select>
+      <button class="btn-primary">Exportar</button>
+    </section>
+
+    <section class="table-card">
+      <div class="table-head">
+        <div>
+          <h3>Contratos de Contratacion Publica</h3>
+          <span>5 contratos encontrados</span>
+        </div>
+        <button class="btn-secondary">Ver todo</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Titulo</th>
+            <th>Monto</th>
+            <th>Requisitos minimos</th>
+            <th>Elegibilidad</th>
+            <th>Formatos</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Construccion de Puente Vehicular</strong>
+              <div class="muted">Ministerio de Obras Publicas</div>
+            </td>
+            <td class="amount">2,500,000.00 US$</td>
+            <td class="muted">Experiencia 5 anos · Capital $1M</td>
+            <td><span class="badge ok">Elegible</span></td>
+            <td class="muted">PDF · Excel</td>
+            <td><button class="btn-ghost">Descargar</button></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Suministro de Equipos Medicos</strong>
+              <div class="muted">Hospital Nacional</div>
+            </td>
+            <td class="amount">850,000.00 US$</td>
+            <td class="muted">Registro sanitario vigente</td>
+            <td><span class="badge warn">No Elegible</span></td>
+            <td class="muted">PDF</td>
+            <td><button class="btn-ghost">Descargar</button></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Servicios de Consultoria TI</strong>
+              <div class="muted">Ministerio de Educacion</div>
+            </td>
+            <td class="amount">320,000.00 US$</td>
+            <td class="muted">Equipo certificado</td>
+            <td><span class="badge ok">Elegible</span></td>
+            <td class="muted">PDF · Doc</td>
+            <td><button class="btn-ghost">Descargar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="cards">
+      <div class="info-card">
+        <h4>Alertas personalizadas</h4>
+        <p>Configura alertas para notificaciones de nuevos contratos.</p>
+        <button class="btn-secondary">Configurar</button>
+      </div>
+      <div class="info-card">
+        <h4>Reportes avanzados</h4>
+        <p>Genera reportes detallados y analisis de tendencias.</p>
+        <button class="btn-secondary">Ver reportes</button>
+      </div>
+      <div class="info-card">
+        <h4>API de acceso</h4>
+        <p>Integra nuestros datos con tus sistemas existentes.</p>
+        <button class="btn-secondary">Documentacion</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/base.js" defer></script>
+  <script src="/static/js/dashboard_demo.js" defer></script>
+</body>
+</html>

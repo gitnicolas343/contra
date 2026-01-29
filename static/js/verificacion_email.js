@@ -86,7 +86,7 @@ const btnVolver    = document.getElementById("btn-volver");
       hintEl.textContent = "Si no recuerdas tu contraseña, podrás recuperarla desde el login.";
 
       setTimeout(() => {
-        window.location.href = "/static/login.html";
+        window.location.href = "/static/verificacion.html";
       }, 3500);
     } else {
       // Usuario NUEVO → completar datos en verificacion.html
@@ -95,7 +95,7 @@ const btnVolver    = document.getElementById("btn-volver");
       hintEl.textContent = "No cierres esta ventana.";
 
       setTimeout(() => {
-        window.location.href = "/static/verificacion.html";
+        window.location.href = "/static/dashboard_demo.html";
       }, 3500);
     }
   } catch (e) {

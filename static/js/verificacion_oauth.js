@@ -137,7 +137,7 @@ const btnVolver    = document.getElementById("btn-volver");
       hintEl.textContent       = "Si no recuerdas tu contraseña, podrás recuperarla desde el login.";
 
       setTimeout(() => {
-        window.location.href = "/static/login.html";
+        window.location.href = "/static/dashboard_demo.html";
       }, 3500);
     } else {
       statusMain.textContent   = "Tu cuenta se ha creado correctamente.";

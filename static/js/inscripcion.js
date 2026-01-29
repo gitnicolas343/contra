@@ -111,7 +111,7 @@ async function handleRegister(event) {
       "Este correo ya tiene una cuenta en ContractRed.\n" +
       "Te llevaremos al inicio de sesión."
       );
-      window.location.href = "/static/login.html";
+      window.location.href = "/static/dashboard_demo.html";
       return false;
     }
 
