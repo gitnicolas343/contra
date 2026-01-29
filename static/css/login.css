@@ -1,282 +1,282 @@
 main {
-            padding: 44px 18px 60px;
-            display: flex;
-            justify-content: center;
-          }
-      
-          .card {
-            width: 100%;
-            max-width: 560px;
-            background: var(--white);
-            border-radius: 24px;
-            padding: 28px 26px;
-            border: 1px solid rgba(148,163,184,0.4);
-            box-shadow: 0 12px 40px rgba(15,23,42,0.15);
-          }
-      
-          .title {
-            font-size: 26px;
-            font-weight: 800;
-            margin: 0 0 8px 0;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-      
-          .subtitle {
-            margin: 0 0 18px 0;
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.6;
-          }
-      
-          .section-title {
-            font-weight: 800;
-            margin: 18px 0 10px;
-            font-size: 14px;
-            color: var(--text-main);
-          }
-      
-          /* ===== Social card block ===== */
-          .social-card {
-            background: linear-gradient(135deg, #f9fafb, #ffffff);
-            border-radius: 24px;
-            padding: 22px 22px 26px;
-            border: 1px solid rgba(148,163,184,0.45);
-            box-shadow: var(--shadow-lg);
-          }
-      
-          .social-title {
-            text-align: center;
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-          }
-      
-          .social-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-          }
-      
-          /* ===== BOTÓN SOCIAL (color oscuro como tu captura) ===== */
-          .btn-social {
-            width: 100%;
-            height: 52px;
-            background: #111827;       /* el color que pediste */
-            color: #f9fafb;
-            border-radius: 999px;
-            border: 1px solid #1f2937;
-      
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 0 18px;
-      
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
-            letter-spacing: 0.01em;
-      
-            box-shadow: 0 2px 6px rgba(0,0,0,0.18);
-            transition: all 0.25s ease;
-          }
-      
-          .btn-social:hover {
-            transform: translateY(-2px);
-            background: #030712;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-          }
-      
-          /* Icono (círculo blanco) */
-          .social-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 999px;
-            background: #ffffff;
-      
-            display: flex;
-            align-items: center;
-            justify-content: center;
-      
-            flex-shrink: 0;
-          }
-      
-          .social-icon svg {
-            width: 20px;
-            height: 20px;
-            display: block;
-          }
-      
-          .social-divider {
-            text-align: center;
-            margin: 22px 0 18px;
-            font-size: 13px;
-            color: #6b7280;
-            position: relative;
-          }
-      
-          .social-divider::before,
-          .social-divider::after {
-            content: "";
-            width: 38%;
-            height: 1px;
-            background: rgba(148,163,184,0.7);
-            position: absolute;
-            top: 50%;
-          }
-      
-          .social-divider::before { left: 0; }
-          .social-divider::after { right: 0; }
-      
-          /* Form */
-          .form-row { margin-bottom: 14px; }
-      
-          .form-row label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 6px;
-          }
-      
-          .input-field {
-            width: 100%;
-            padding: 11px 13px;
-            border-radius: 14px;
-            border: 1px solid #cbd5e1;
-            font-size: 15px;
-            background: #f9fafb;
-            transition: all 0.2s ease;
-            outline: none;
-          }
-      
-          .input-field:focus {
-            border-color: rgba(106,13,173,0.35);
-            box-shadow: 0 0 0 4px rgba(106,13,173,0.10);
-            background: #ffffff;
-          }
-      
-          .btn-primary {
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 999px;
-            border: none;
-            cursor: pointer;
-            font-weight: 800;
-            color: #fff;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
-            box-shadow: 0 14px 30px rgba(106,13,173,0.28);
-            transition: transform 0.15s ease;
-          }
-          .btn-primary:hover { transform: translateY(-1px); }
-          .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-      
-          .hint {
-            margin-top: 20px;
-            font-size: 13px;
-            margin-bottom: 20px;
-            color: var(--text-secondary);
-          }
-      
-          .error {
-            margin-top: 10px;
-            padding: 10px 12px;
-            border-radius: 14px;
-            background: rgba(225,29,72,0.10);
-            border: 1px solid rgba(225,29,72,0.25);
-            color: #9f1239;
-            font-weight: 600;
-            display: none;
-          }
-      
-          /* Modales */
-          .modal-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.55);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px;
-            z-index: 2000;
-          }
-      
-          .modal-card {
-            width: 100%;
-            max-width: 920px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-            padding: 18px 18px;
-            border: 1px solid rgba(148,163,184,0.4);
-            max-height: 86vh;
-            overflow: auto;
-          }
-      
-          .modal-title { margin: 4px 0 6px; font-size: 18px; font-weight: 900; }
-          .modal-text  { margin: 0 0 12px; color: var(--text-secondary); font-size: 14px; }
-      
-          .modal-detalle-title { font-weight: 900; margin: 10px 0 8px; }
-          .modal-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-          .modal-table th, .modal-table td {
-            border-bottom: 1px solid rgba(148,163,184,0.45);
-            padding: 10px 8px;
-            text-align: left;
-            vertical-align: top;
-          }
-          .modal-table th { background: rgba(106,13,173,0.06); font-weight: 900; }
-          .modal-note { margin-top: 10px; font-size: 12px; color: var(--text-secondary); }
-      
-          .modal-actions {
-            margin-top: 14px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-          }
-      
-          .loading-card {
-            width: 100%;
-            max-width: 420px;
-            background: #fff;
-            border-radius: 20px;
-            padding: 18px 18px;
-            border: 1px solid rgba(148,163,184,0.4);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-            text-align: center;
-          }
-      
-          .spinner {
-            width: 44px;
-            height: 44px;
-            border-radius: 999px;
-            border: 5px solid rgba(106,13,173,0.18);
-            border-top-color: rgba(106,13,173,0.9);
-            margin: 6px auto 10px;
-            animation: spin 0.9s linear infinite;
-          }
-          @keyframes spin { to { transform: rotate(360deg); } }
-      
-          .loading-title { font-weight: 900; margin: 8px 0 6px; }
-          .loading-text { font-size: 13px; color: var(--text-secondary); margin: 0; }
-      
-          @media (max-width: 900px) {
-            }
-          .forgot-row{
-            margin-top:
-            15px;text-align: left;
+  padding: 44px 18px 60px;
+  display: flex;
+  justify-content: center;
+}
 
-            margin-bottom: 10px;
-          }
-          .forgot-row a{
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 13px;
-          }
+.card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 28px 26px;
+  border: 1px solid rgba(148,163,184,0.4);
+  box-shadow: 0 12px 40px rgba(15,23,42,0.15);
+}
 
-          .forgot-row a:hover{
-            text-decoration: underline;
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-          }
+.subtitle {
+  margin: 0 0 18px 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.section-title {
+  font-weight: 800;
+  margin: 18px 0 10px;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+/* ===== Social card block ===== */
+.social-card {
+  background: linear-gradient(135deg, #f9fafb, #ffffff);
+  border-radius: 24px;
+  padding: 22px 22px 26px;
+  border: 1px solid rgba(148,163,184,0.45);
+  box-shadow: var(--shadow-lg);
+}
+
+.social-title {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.social-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ===== BOTÓN SOCIAL (color oscuro como tu captura) ===== */
+.btn-social {
+  width: 100%;
+  height: 52px;
+  background: #111827;       /* el color que pediste */
+  color: #f9fafb;
+  border-radius: 999px;
+  border: 1px solid #1f2937;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 18px;
+
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  transition: all 0.25s ease;
+}
+
+.btn-social:hover {
+  transform: translateY(-2px);
+  background: #030712;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* Icono (círculo blanco) */
+.social-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.social-divider {
+  text-align: center;
+  margin: 22px 0 18px;
+  font-size: 13px;
+  color: #6b7280;
+  position: relative;
+}
+
+.social-divider::before,
+.social-divider::after {
+  content: "";
+  width: 38%;
+  height: 1px;
+  background: rgba(148,163,184,0.7);
+  position: absolute;
+  top: 50%;
+}
+
+.social-divider::before { left: 0; }
+.social-divider::after { right: 0; }
+
+/* Form */
+.form-row { margin-bottom: 14px; }
+
+.form-row label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: rgba(106,13,173,0.35);
+  box-shadow: 0 0 0 4px rgba(106,13,173,0.10);
+  background: #ffffff;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+  box-shadow: 0 14px 30px rgba(106,13,173,0.28);
+  transition: transform 0.15s ease;
+}
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.hint {
+  margin-top: 20px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+}
+
+.error {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(225,29,72,0.10);
+  border: 1px solid rgba(225,29,72,0.25);
+  color: #9f1239;
+  font-weight: 600;
+  display: none;
+}
+
+/* Modales */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 2000;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 920px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  padding: 18px 18px;
+  border: 1px solid rgba(148,163,184,0.4);
+  max-height: 86vh;
+  overflow: auto;
+}
+
+.modal-title { margin: 4px 0 6px; font-size: 18px; font-weight: 900; }
+.modal-text  { margin: 0 0 12px; color: var(--text-secondary); font-size: 14px; }
+
+.modal-detalle-title { font-weight: 900; margin: 10px 0 8px; }
+.modal-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.modal-table th, .modal-table td {
+  border-bottom: 1px solid rgba(148,163,184,0.45);
+  padding: 10px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.modal-table th { background: rgba(106,13,173,0.06); font-weight: 900; }
+.modal-note { margin-top: 10px; font-size: 12px; color: var(--text-secondary); }
+
+.modal-actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.loading-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 18px 18px;
+  border: 1px solid rgba(148,163,184,0.4);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 5px solid rgba(106,13,173,0.18);
+  border-top-color: rgba(106,13,173,0.9);
+  margin: 6px auto 10px;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-title { font-weight: 900; margin: 8px 0 6px; }
+.loading-text { font-size: 13px; color: var(--text-secondary); margin: 0; }
+
+@media (max-width: 900px) {
+}
+.forgot-row{
+  margin-top:
+  15px;text-align: left;
+
+  margin-bottom: 10px;
+}
+.forgot-row a{
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.forgot-row a:hover{
+  text-decoration: underline;
+
+}
