@@ -43,6 +43,9 @@
   const planCards = document.querySelectorAll(".plan-card");
   const planButtons = document.querySelectorAll("[data-plan-select]");
   const btnVerPlanes = document.getElementById("btn-ver-planes");
+  const checkout = document.getElementById("checkout");
+  const checkoutPlaceholder = document.getElementById("checkout-placeholder");
+  const btnOcultarPago = document.getElementById("btn-ocultar-pago");
 
   const setPlan = (key) => {
     const plan = plans[key];
@@ -65,13 +68,37 @@
     });
   };
 
+  const showCheckout = () => {
+    if (!checkout) return;
+    checkout.classList.remove("is-hidden");
+    checkout.classList.add("is-visible");
+    checkout.setAttribute("aria-hidden", "false");
+    if (checkoutPlaceholder) {
+      checkoutPlaceholder.classList.add("is-hidden");
+    }
+    checkout.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const hideCheckout = () => {
+    if (!checkout) return;
+    checkout.classList.remove("is-visible");
+    checkout.classList.add("is-hidden");
+    checkout.setAttribute("aria-hidden", "true");
+    if (checkoutPlaceholder) {
+      checkoutPlaceholder.classList.remove("is-hidden");
+    }
+  };
+
   planButtons.forEach((button) => {
     button.addEventListener("click", () => {
       setPlan(button.dataset.planSelect);
-      const checkout = document.getElementById("checkout");
-      if (checkout) checkout.scrollIntoView({ behavior: "smooth" });
+      showCheckout();
     });
   });
+
+  if (btnOcultarPago) {
+    btnOcultarPago.addEventListener("click", hideCheckout);
+  }
 
   if (btnVerPlanes) {
     btnVerPlanes.addEventListener("click", () => {

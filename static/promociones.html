@@ -96,8 +96,21 @@
       </article>
     </section>
 
-    <section class="checkout" id="checkout">
-      <div class="summary-card">
+    <div class="checkout-placeholder" id="checkout-placeholder">
+      Selecciona un plan para desplegar el formulario de pago y datos bancarios.
+    </div>
+
+    <section class="checkout is-hidden" id="checkout" aria-hidden="true">
+      <div class="checkout-head">
+        <div>
+          <span class="eyebrow">Pago</span>
+          <h2>Formulario y datos bancarios</h2>
+          <p class="checkout-note">Completa estos datos cuando actives la pasarela.</p>
+        </div>
+        <button class="btn-secondary btn-collapse" id="btn-ocultar-pago" type="button">Ocultar</button>
+      </div>
+      <div class="checkout-grid">
+        <div class="summary-card">
         <div class="summary-head">
           <div>
             <div class="summary-label">Plan seleccionado</div>
@@ -120,9 +133,9 @@
         <div class="summary-note">
           Pasarela en preparacion. La estructura esta lista para conectar Stripe, PayU o tu proveedor.
         </div>
-      </div>
+        </div>
 
-      <div class="pay-card">
+        <div class="pay-card">
         <div class="pay-head">
           <h3>Datos de pago</h3>
           <span class="pay-chip">Integracion pendiente</span>
@@ -157,6 +170,7 @@
           <div class="pay-badge">PCI</div>
           <div class="pay-badge">SSL</div>
           <div class="pay-badge">Tokenizacion</div>
+        </div>
         </div>
       </div>
     </section>
