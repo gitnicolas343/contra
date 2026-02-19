@@ -75,7 +75,7 @@
             </div>
             <span class="chat-chip">Canal cifrado</span>
           </div>
-          <div class="chat-body">
+          <div class="chat-body" id="chat-body">
             <div class="bubble bot">Hola, soy el agente ContratRed. Estoy listo para ayudarte.</div>
             <div class="bubble user">Estoy en lista negra, que debo hacer?</div>
             <div class="bubble bot">Solucion: te guiamos en 3 pasos para validar tu caso y solicitar la actualizacion ante la entidad correspondiente.</div>
@@ -102,9 +102,11 @@
           <div class="side-card">
             <h3>Respuestas inmediatas</h3>
             <p>Selecciona un tema y te guiamos paso a paso.</p>
-            <button class="btn-secondary" type="button">Listas negras</button>
-            <button class="btn-secondary" type="button">Elegibilidad</button>
-            <button class="btn-secondary" type="button">Reportes</button>
+            <button class="btn-secondary" type="button" data-topic="listas_negras">Listas negras</button>
+            <button class="btn-secondary" type="button" data-topic="elegibilidad">Elegibilidad</button>
+            <button class="btn-secondary" type="button" data-topic="reportes">Reportes</button>
+            <button class="btn-secondary" type="button" data-topic="pagos">Pagos</button>
+            <button class="btn-secondary" type="button" data-topic="promociones">Promociones</button>
           </div>
         </div>
       </div>

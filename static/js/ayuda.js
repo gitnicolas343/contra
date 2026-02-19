@@ -34,6 +34,67 @@
 })();
 
 (() => {
+  const chatBody = document.getElementById("chat-body");
+  const topicButtons = document.querySelectorAll("[data-topic]");
+
+  if (!chatBody || !topicButtons.length) return;
+
+  const topics = {
+    listas_negras: {
+      prompt: "Estoy en lista negra, que debo hacer?",
+      response:
+        "Solucion: validamos el detalle, reunimos soporte y preparamos la solicitud con la entidad para actualizar tu estado.",
+    },
+    elegibilidad: {
+      prompt: "Necesito saber si soy elegible para una convocatoria.",
+      response:
+        "Solucion: revisamos requisitos, comparamos tu perfil y te damos la lista exacta de ajustes para cumplir al 100%.",
+    },
+    reportes: {
+      prompt: "Necesito generar un reporte con mis convocatorias.",
+      response:
+        "Solucion: te guiamos en la seleccion de filtros y te damos el formato listo para exportar en PDF o Excel.",
+    },
+    pagos: {
+      prompt: "Tengo dudas sobre el pago y la activacion del plan.",
+      response:
+        "Solucion: revisamos el plan elegido, el estado del pago y dejamos la pasarela lista para activacion.",
+    },
+    promociones: {
+      prompt: "Que diferencia hay entre Estandar y Premium?",
+      response:
+        "Solucion: comparamos beneficios, alertas y scoring para recomendar el plan ideal para tu empresa.",
+    },
+  };
+
+  const addBubble = (role, text, extraClass) => {
+    const bubble = document.createElement("div");
+    bubble.className = `bubble ${role}` + (extraClass ? ` ${extraClass}` : "");
+    bubble.textContent = text;
+    chatBody.appendChild(bubble);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return bubble;
+  };
+
+  const respondWith = (topicKey) => {
+    const topic = topics[topicKey];
+    if (!topic) return;
+
+    addBubble("user", topic.prompt);
+    const pending = addBubble("bot", "Respuesta en proceso...", "pending");
+
+    window.setTimeout(() => {
+      pending.textContent = topic.response;
+      pending.classList.remove("pending");
+    }, 900 + Math.random() * 900);
+  };
+
+  topicButtons.forEach((btn) => {
+    btn.addEventListener("click", () => respondWith(btn.dataset.topic));
+  });
+})();
+
+(() => {
   const stepSections = Array.from(document.querySelectorAll(".step-section"));
   const stepperItems = Array.from(document.querySelectorAll(".stepper-item"));
 

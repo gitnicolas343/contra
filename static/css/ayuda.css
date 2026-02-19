@@ -263,6 +263,11 @@
   box-shadow: var(--shadow-sm);
 }
 
+.bubble.pending {
+  opacity: 0.7;
+  font-style: italic;
+}
+
 .bubble.bot {
   background: rgba(106, 13, 173, 0.1);
   color: var(--primary-dark);
