@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ContratRed | Ayuda Pago</title>
+  <title>ContratRed | Ayuda</title>
   <link rel="stylesheet" href="/static/css/base.css" />
   <link rel="stylesheet" href="/static/css/auth.css" />
   <link rel="stylesheet" href="/static/css/ayuda.css" />
@@ -24,81 +24,12 @@
   </header>
 
   <main class="help-main">
-    <div class="help-subnav reveal">
-      <a href="/static/ayuda.html">Resumen</a>
-      <a href="/static/ayuda_promos.html">Promociones</a>
-      <a class="active" href="/static/ayuda_pago.html">Pago</a>
-      <a href="/static/ayuda_chat.html">Chatbot</a>
-    </div>
-
-    <section class="help-module pay-module reveal">
-      <div class="pay-summary">
-        <div class="summary-head">
-          <div>
-            <div class="summary-label">Plan seleccionado</div>
-            <div id="summary-plan" class="summary-name">Premium</div>
-          </div>
-          <span id="summary-tag" class="summary-tag">Recomendado</span>
-        </div>
-        <div id="summary-price" class="summary-price">$59 / mes</div>
-        <ul id="summary-benefits" class="summary-benefits">
-          <li>Scoring de elegibilidad</li>
-          <li>Convocatorias filtradas</li>
-          <li>Agente dedicado</li>
-        </ul>
-        <div class="summary-divider"></div>
-        <div class="summary-total">
-          <span>Total hoy</span>
-          <strong id="summary-total">$59</strong>
-        </div>
-        <button class="btn-primary" id="btn-checkout" type="button" disabled>Pago pronto</button>
-        <div class="summary-note">
-          Pasarela en preparacion. Lista para conectar Stripe, PayU o MercadoPago.
-        </div>
-      </div>
-
-      <div class="pay-form">
-        <div class="pay-head">
-          <h3>Formulario de pago</h3>
-          <span class="pay-chip">Integracion pendiente</span>
-        </div>
-        <div class="form-grid">
-          <label>
-            Nombre en la tarjeta
-            <input class="input-field" type="text" placeholder="Nombre completo" disabled />
-          </label>
-          <label>
-            Numero de tarjeta
-            <input class="input-field" type="text" placeholder="0000 0000 0000 0000" disabled />
-          </label>
-          <label>
-            Vencimiento
-            <input class="input-field" type="text" placeholder="MM/AA" disabled />
-          </label>
-          <label>
-            CVV
-            <input class="input-field" type="text" placeholder="000" disabled />
-          </label>
-          <label class="full">
-            Empresa (opcional)
-            <input class="input-field" type="text" placeholder="Nombre de empresa" disabled />
-          </label>
-        </div>
-        <div class="pay-actions">
-          <button class="btn-secondary" type="button" disabled>Guardar metodo</button>
-          <button class="btn-primary" type="button" disabled>Confirmar pago</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="module-footer reveal">
-      <div class="module-card compact">
-        <h3>Necesitas ayuda?</h3>
-        <p>Si tienes dudas sobre el plan o el pago, abre el chat con un agente.</p>
-        <div class="module-actions">
-          <a class="btn-secondary" href="/static/ayuda_chat.html">Ir al chat</a>
-          <a class="btn-secondary" href="/static/ayuda_promos.html">Volver a planes</a>
-        </div>
+    <section class="help-module reveal">
+      <span class="eyebrow">Ayuda centralizada</span>
+      <h1>Esta seccion ahora esta en Ayuda</h1>
+      <p>Para mantener la experiencia clara, todo el soporte se encuentra en una sola pagina.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="/static/ayuda.html">Ir a Ayuda</a>
       </div>
     </section>
   </main>

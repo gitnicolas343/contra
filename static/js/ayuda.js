@@ -25,6 +25,75 @@
 })();
 
 (() => {
+  const items = Array.from(document.querySelectorAll(".help-item"));
+  if (!items.length) return;
+
+  const closeItem = (item) => {
+    const panel = item.querySelector(".help-panel");
+    const toggle = item.querySelector(".help-toggle");
+    item.classList.remove("is-open");
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+    if (panel) panel.style.maxHeight = "0px";
+  };
+
+  const openItem = (item, scrollIntoView) => {
+    items.forEach((other) => {
+      if (other !== item) closeItem(other);
+    });
+
+    const panel = item.querySelector(".help-panel");
+    const toggle = item.querySelector(".help-toggle");
+    item.classList.add("is-open");
+    if (toggle) toggle.setAttribute("aria-expanded", "true");
+    if (panel) panel.style.maxHeight = `${panel.scrollHeight}px`;
+
+    if (scrollIntoView) {
+      item.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const openSection = (key) => {
+    const target = items.find((item) => item.dataset.section === key);
+    if (target) openItem(target, true);
+  };
+
+  items.forEach((item) => {
+    const panel = item.querySelector(".help-panel");
+    const toggle = item.querySelector(".help-toggle");
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        if (item.classList.contains("is-open")) {
+          closeItem(item);
+        } else {
+          openItem(item, true);
+        }
+      });
+    }
+
+    if (item.classList.contains("is-open") && panel) {
+      panel.style.maxHeight = `${panel.scrollHeight}px`;
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    items.forEach((item) => {
+      if (!item.classList.contains("is-open")) return;
+      const panel = item.querySelector(".help-panel");
+      if (panel) panel.style.maxHeight = `${panel.scrollHeight}px`;
+    });
+  });
+
+  document.querySelectorAll("[data-open-section]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = button.getAttribute("data-open-section");
+      if (target) openSection(target);
+    });
+  });
+
+  window.HelpOpenSection = openSection;
+})();
+
+(() => {
   const STORAGE_KEY = "help_plan";
   const plans = {
     estandar: {
@@ -85,6 +154,9 @@
   planButtons.forEach((button) => {
     button.addEventListener("click", () => {
       setPlan(button.dataset.planSelect, true);
+      if (typeof window.HelpOpenSection === "function") {
+        window.HelpOpenSection("pago");
+      }
     });
   });
 

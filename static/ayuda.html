@@ -24,24 +24,17 @@
   </header>
 
   <main class="help-main">
-    <div class="help-subnav reveal">
-      <a class="active" href="/static/ayuda.html">Resumen</a>
-      <a href="/static/ayuda_promos.html">Promociones</a>
-      <a href="/static/ayuda_pago.html">Pago</a>
-      <a href="/static/ayuda_chat.html">Chatbot</a>
-    </div>
-
     <section class="help-hero reveal">
       <div class="hero-copy">
-        <span class="eyebrow">Centro de ayuda</span>
-        <h1>Modulos de soporte y activacion</h1>
+        <span class="eyebrow">Ayuda centralizada</span>
+        <h1>Todo el soporte en un solo lugar</h1>
         <p>
-          Elige el modulo que necesitas: promociones, pago o acceso al chatbot. Cada paso
-          esta separado para que la experiencia sea clara y profesional.
+          Accede a promociones, pago y chatbot desde una sola pagina. Cada modulo se abre
+          en la misma vista para que todo sea claro, ordenado y profesional.
         </p>
         <div class="hero-actions">
-          <a class="btn-primary" href="/static/ayuda_chat.html">Ir al chatbot</a>
-          <a class="btn-secondary" href="/static/ayuda_promos.html">Ver promociones</a>
+          <button class="btn-primary" type="button" data-open-section="chat">Abrir chatbot</button>
+          <button class="btn-secondary" type="button" data-open-section="promos">Ver planes</button>
         </div>
         <div class="status-row">
           <div class="status-pill">
@@ -52,94 +45,170 @@
           <div class="status-item">Canal seguro activo</div>
         </div>
       </div>
-
-      <div class="hero-panel">
-        <div class="panel-head">
-          <div class="agent-avatar">A</div>
-          <div>
-            <div class="agent-name">Agente Inteligente</div>
-            <div class="agent-role">Especialista en contratacion publica</div>
-          </div>
-          <span class="agent-tag">En linea</span>
-        </div>
-        <div class="panel-body">
-          <div class="panel-step done">1. Verificacion de identidad</div>
-          <div class="panel-step">2. Apertura del canal seguro</div>
-          <div class="panel-step">3. Analisis del caso</div>
-          <div class="panel-step">4. Recomendaciones y acciones</div>
-        </div>
-        <div class="panel-metrics">
-          <div>
-            <div class="metric-value">98%</div>
-            <div class="metric-label">Satisfaccion</div>
-          </div>
-          <div>
-            <div class="metric-value">2 min</div>
-            <div class="metric-label">Respuesta promedio</div>
-          </div>
-          <div>
-            <div class="metric-value">24/7</div>
-            <div class="metric-label">Cobertura</div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section class="module-grid reveal">
-      <article class="module-card">
-        <div class="module-icon">P</div>
-        <h3>Promociones</h3>
-        <p>Compara planes Estandar y Premium con beneficios claros.</p>
-        <div class="module-kpis">
-          <span class="kpi-chip">Planes activos</span>
-          <span class="kpi-chip">Beneficios</span>
-        </div>
-        <div class="module-actions">
-          <a class="btn-secondary" href="/static/ayuda_promos.html">Abrir modulo</a>
+    <section class="help-stack">
+      <article class="help-item is-open reveal" data-section="promos">
+        <button class="help-toggle" type="button" aria-expanded="true">
+          <div class="toggle-text">
+            <span class="toggle-title">Promociones y planes</span>
+            <span class="toggle-sub">Compara Estandar vs Premium y selecciona tu plan.</span>
+          </div>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="help-panel">
+          <div class="panel-content promo-grid">
+            <article class="promo-card" data-plan="estandar">
+              <div class="promo-tag">Estandar</div>
+              <div class="promo-price">$0<span>/mes</span></div>
+              <div class="promo-sub">Para explorar convocatorias</div>
+              <ul class="promo-list">
+                <li>Resumen diario</li>
+                <li>Alertas semanales</li>
+                <li>Soporte por correo</li>
+              </ul>
+              <button class="btn-secondary plan-select" data-plan-select="estandar" type="button">Seleccionar</button>
+            </article>
+            <article class="promo-card highlight" data-plan="premium">
+              <div class="promo-tag gold">Premium</div>
+              <div class="promo-price">$59<span>/mes</span></div>
+              <div class="promo-sub">Para analitica avanzada</div>
+              <ul class="promo-list">
+                <li>Scoring de elegibilidad</li>
+                <li>Convocatorias filtradas</li>
+                <li>Agente dedicado</li>
+              </ul>
+              <button class="btn-primary plan-select" data-plan-select="premium" type="button">Seleccionar</button>
+            </article>
+          </div>
         </div>
       </article>
-      <article class="module-card">
-        <div class="module-icon">$</div>
-        <h3>Pago</h3>
-        <p>Formulario preparado para integrar tu pasarela favorita.</p>
-        <div class="module-kpis">
-          <span class="kpi-chip">Checkout listo</span>
-          <span class="kpi-chip">Seguro</span>
-        </div>
-        <div class="module-actions">
-          <a class="btn-secondary" href="/static/ayuda_pago.html">Abrir modulo</a>
-        </div>
-      </article>
-      <article class="module-card">
-        <div class="module-icon">C</div>
-        <h3>Chatbot</h3>
-        <p>Acceso al agente virtual en un entorno dedicado.</p>
-        <div class="module-kpis">
-          <span class="kpi-chip">Canal directo</span>
-          <span class="kpi-chip">Prioridad</span>
-        </div>
-        <div class="module-actions">
-          <a class="btn-primary" href="/static/ayuda_chat.html">Ir al chat</a>
-        </div>
-      </article>
-    </section>
 
-    <section class="help-actions reveal">
-      <div class="action-card">
-        <h3>Documentacion guiada</h3>
-        <p>Accede a guias, tutoriales y preguntas frecuentes con un flujo paso a paso.</p>
-        <button class="btn-secondary" type="button">Explorar guias</button>
-      </div>
-      <div class="action-card">
-        <h3>Soporte para reportes</h3>
-        <p>Sube tu caso y un agente lo analizara con prioridad dentro del panel.</p>
-        <button class="btn-secondary" type="button">Crear ticket</button>
-      </div>
-      <div class="action-card">
-        <h3>Checklist de preparacion</h3>
-        <p>Reune los datos clave antes de iniciar el chat para agilizar la validacion.</p>
-        <button class="btn-secondary" type="button">Checklist rapido</button>
-      </div>
+      <article class="help-item reveal" data-section="pago">
+        <button class="help-toggle" type="button" aria-expanded="false">
+          <div class="toggle-text">
+            <span class="toggle-title">Pago y datos bancarios</span>
+            <span class="toggle-sub">Formulario listo para conectar tu pasarela.</span>
+          </div>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="help-panel">
+          <div class="panel-content pay-module">
+            <div class="pay-summary">
+              <div class="summary-head">
+                <div>
+                  <div class="summary-label">Plan seleccionado</div>
+                  <div id="summary-plan" class="summary-name">Premium</div>
+                </div>
+                <span id="summary-tag" class="summary-tag">Recomendado</span>
+              </div>
+              <div id="summary-price" class="summary-price">$59 / mes</div>
+              <ul id="summary-benefits" class="summary-benefits">
+                <li>Scoring de elegibilidad</li>
+                <li>Convocatorias filtradas</li>
+                <li>Agente dedicado</li>
+              </ul>
+              <div class="summary-divider"></div>
+              <div class="summary-total">
+                <span>Total hoy</span>
+                <strong id="summary-total">$59</strong>
+              </div>
+              <button class="btn-primary" id="btn-checkout" type="button" disabled>Pago pronto</button>
+              <div class="summary-note">
+                Pasarela en preparacion. Lista para conectar Stripe, PayU o MercadoPago.
+              </div>
+            </div>
+
+            <div class="pay-form">
+              <div class="pay-head">
+                <h3>Formulario de pago</h3>
+                <span class="pay-chip">Integracion pendiente</span>
+              </div>
+              <div class="form-grid">
+                <label>
+                  Nombre en la tarjeta
+                  <input class="input-field" type="text" placeholder="Nombre completo" disabled />
+                </label>
+                <label>
+                  Numero de tarjeta
+                  <input class="input-field" type="text" placeholder="0000 0000 0000 0000" disabled />
+                </label>
+                <label>
+                  Vencimiento
+                  <input class="input-field" type="text" placeholder="MM/AA" disabled />
+                </label>
+                <label>
+                  CVV
+                  <input class="input-field" type="text" placeholder="000" disabled />
+                </label>
+                <label class="full">
+                  Empresa (opcional)
+                  <input class="input-field" type="text" placeholder="Nombre de empresa" disabled />
+                </label>
+              </div>
+              <div class="pay-actions">
+                <button class="btn-secondary" type="button" disabled>Guardar metodo</button>
+                <button class="btn-primary" type="button" disabled>Confirmar pago</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="help-item reveal" data-section="chat">
+        <button class="help-toggle" type="button" aria-expanded="false">
+          <div class="toggle-text">
+            <span class="toggle-title">Chatbot y soporte</span>
+            <span class="toggle-sub">Abre el canal de atencion con el agente virtual.</span>
+          </div>
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="help-panel">
+          <div class="panel-content chat-shell">
+            <div class="chat-card">
+              <div class="chat-head">
+                <div>
+                  <div class="chat-title">Sala de ayuda</div>
+                  <div class="chat-subtitle">Sesion demo - sin envio real</div>
+                </div>
+                <span class="chat-chip">Canal cifrado</span>
+              </div>
+              <div class="chat-body">
+                <div class="bubble bot">Hola, soy el agente ContratRed. Estoy listo para ayudarte.</div>
+                <div class="bubble user">Necesito revisar un posible bloqueo en listas negras.</div>
+                <div class="bubble bot">Perfecto. Vamos a validar tu documento y la entidad relacionada.</div>
+              </div>
+              <div class="chat-input">
+                <input class="input-field" placeholder="Escribe tu consulta (disponible pronto)" disabled />
+                <button class="btn-send" type="button" disabled>Enviar</button>
+              </div>
+            </div>
+
+            <div class="side-stack">
+              <div class="side-card">
+                <h3>Estado del agente</h3>
+                <p>El canal esta listo para recibir tu caso en cuanto actives la conexion.</p>
+                <button class="btn-primary" id="btn-conectar" type="button">Conectar con agente</button>
+                <div class="status-row">
+                  <div class="status-pill">
+                    <span class="status-dot" id="status-dot"></span>
+                    <span id="status-text">Disponible</span>
+                  </div>
+                </div>
+                <div class="status-note" id="status-log">
+                  El agente estara listo para responder consultas sobre listas negras, reportes y soporte tecnico.
+                </div>
+              </div>
+              <div class="side-card">
+                <h3>Atajos</h3>
+                <p>Vuelve a promociones o pago sin salir de la pagina.</p>
+                <button class="btn-secondary" type="button" data-open-section="promos">Promociones</button>
+                <button class="btn-secondary" type="button" data-open-section="pago">Pago</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
     </section>
   </main>
 
