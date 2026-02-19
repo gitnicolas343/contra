@@ -38,13 +38,42 @@
   const planCards = document.querySelectorAll(".plan-card");
   const planButtons = document.querySelectorAll("[data-plan-select]");
 
+  let step2Unlocked = false;
+  let step3Unlocked = false;
+
+  const updateStepper = () => {
+    stepperItems.forEach((item) => {
+      const step = item.dataset.step;
+      const isDisabled = (step === "2" && !step2Unlocked) || (step === "3" && !step3Unlocked);
+      item.classList.toggle("is-disabled", isDisabled);
+      item.disabled = isDisabled;
+      item.setAttribute("aria-disabled", String(isDisabled));
+
+      const isComplete = (step === "1" && step2Unlocked) || (step === "2" && step3Unlocked);
+      item.classList.toggle("is-complete", isComplete);
+    });
+  };
+
   const showStep = (step) => {
+    if (step === "2" && !step2Unlocked) return;
+    if (step === "3" && !step3Unlocked) return;
+
     stepSections.forEach((section) => {
       section.classList.toggle("is-active", section.dataset.step === step);
     });
     stepperItems.forEach((item) => {
       item.classList.toggle("is-active", item.dataset.step === step);
     });
+  };
+
+  const unlockStep2 = () => {
+    step2Unlocked = true;
+    updateStepper();
+  };
+
+  const unlockStep3 = () => {
+    step3Unlocked = true;
+    updateStepper();
   };
 
   const setPlan = (key) => {
@@ -71,7 +100,12 @@
   };
 
   document.querySelectorAll("[data-next-step]").forEach((btn) => {
-    btn.addEventListener("click", () => showStep(btn.dataset.nextStep));
+    btn.addEventListener("click", () => {
+      const nextStep = btn.dataset.nextStep;
+      if (nextStep === "2") unlockStep2();
+      if (nextStep === "3") unlockStep3();
+      showStep(nextStep);
+    });
   });
 
   document.querySelectorAll("[data-prev-step]").forEach((btn) => {
@@ -85,10 +119,12 @@
   planButtons.forEach((button) => {
     button.addEventListener("click", () => {
       setPlan(button.dataset.planSelect);
+      unlockStep3();
       showStep("3");
     });
   });
 
+  updateStepper();
   showStep("1");
   setPlan("pro");
 })();
