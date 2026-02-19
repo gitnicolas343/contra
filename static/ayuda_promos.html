@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ContratRed | Ayuda Promociones</title>
+  <link rel="stylesheet" href="/static/css/base.css" />
+  <link rel="stylesheet" href="/static/css/auth.css" />
+  <link rel="stylesheet" href="/static/css/ayuda.css" />
+</head>
+<body>
+  <div class="help-orb help-orb-one"></div>
+  <div class="help-orb help-orb-two"></div>
+
+  <header>
+    <a href="/static/index.html">
+      <img src="/static/assets/img/logo.png" alt="Logo ContratRed" />
+    </a>
+    <nav>
+      <a href="/static/inscripcion.html">Inscripcion</a>
+      <a href="/static/promociones.html">Promociones</a>
+      <a href="/static/ayuda.html" class="is-active">Ayuda</a>
+    </nav>
+  </header>
+
+  <main class="help-main">
+    <div class="help-subnav reveal">
+      <a href="/static/ayuda.html">Resumen</a>
+      <a class="active" href="/static/ayuda_promos.html">Promociones</a>
+      <a href="/static/ayuda_pago.html">Pago</a>
+      <a href="/static/ayuda_chat.html">Chatbot</a>
+    </div>
+
+    <section class="help-module promo-module reveal">
+      <div class="module-head">
+        <span class="eyebrow">Promociones</span>
+        <h2>Selecciona el plan que deseas activar</h2>
+        <p>Marca un plan y continua al modulo de pago cuando estes listo.</p>
+      </div>
+      <div class="promo-grid">
+        <article class="promo-card" data-plan="estandar">
+          <div class="promo-tag">Estandar</div>
+          <div class="promo-price">$0<span>/mes</span></div>
+          <div class="promo-sub">Para explorar convocatorias</div>
+          <ul class="promo-list">
+            <li>Resumen diario</li>
+            <li>Alertas semanales</li>
+            <li>Soporte por correo</li>
+          </ul>
+          <button class="btn-secondary plan-select" data-plan-select="estandar" type="button">Seleccionar</button>
+        </article>
+        <article class="promo-card highlight" data-plan="premium">
+          <div class="promo-tag gold">Premium</div>
+          <div class="promo-price">$59<span>/mes</span></div>
+          <div class="promo-sub">Para analitica avanzada</div>
+          <ul class="promo-list">
+            <li>Scoring de elegibilidad</li>
+            <li>Convocatorias filtradas</li>
+            <li>Agente dedicado</li>
+          </ul>
+          <button class="btn-primary plan-select" data-plan-select="premium" type="button">Seleccionar</button>
+        </article>
+      </div>
+      <div class="module-actions">
+        <a class="btn-primary" href="/static/ayuda_pago.html">Ir a pago</a>
+        <a class="btn-secondary" href="/static/ayuda_chat.html">Hablar con agente</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/base.js" defer></script>
+  <script src="/static/js/ayuda.js" defer></script>
+</body>
+</html>

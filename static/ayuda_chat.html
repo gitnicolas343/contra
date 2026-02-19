@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ContratRed | Ayuda Chatbot</title>
+  <link rel="stylesheet" href="/static/css/base.css" />
+  <link rel="stylesheet" href="/static/css/auth.css" />
+  <link rel="stylesheet" href="/static/css/ayuda.css" />
+</head>
+<body>
+  <div class="help-orb help-orb-one"></div>
+  <div class="help-orb help-orb-two"></div>
+
+  <header>
+    <a href="/static/index.html">
+      <img src="/static/assets/img/logo.png" alt="Logo ContratRed" />
+    </a>
+    <nav>
+      <a href="/static/inscripcion.html">Inscripcion</a>
+      <a href="/static/promociones.html">Promociones</a>
+      <a href="/static/ayuda.html" class="is-active">Ayuda</a>
+    </nav>
+  </header>
+
+  <main class="help-main">
+    <div class="help-subnav reveal">
+      <a href="/static/ayuda.html">Resumen</a>
+      <a href="/static/ayuda_promos.html">Promociones</a>
+      <a href="/static/ayuda_pago.html">Pago</a>
+      <a class="active" href="/static/ayuda_chat.html">Chatbot</a>
+    </div>
+
+    <section class="help-hero reveal">
+      <div class="hero-copy">
+        <span class="eyebrow">Agente ContratRed</span>
+        <h1>Chatbot en un entorno dedicado</h1>
+        <p>
+          Este espacio concentra la conversacion con el agente. El canal se activa cuando
+          presionas conectar y queda listo para recibir casos.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" id="btn-conectar" type="button">Conectar con agente</button>
+          <a class="btn-secondary" href="/static/ayuda_promos.html">Ver promociones</a>
+        </div>
+        <div class="status-row">
+          <div class="status-pill">
+            <span class="status-dot" id="status-dot"></span>
+            <span id="status-text">Disponible</span>
+          </div>
+          <div class="status-item">Tiempo estimado: 3-5 min</div>
+          <div class="status-item">Canal seguro activo</div>
+        </div>
+        <div class="status-note" id="status-log">
+          El agente estara listo para responder consultas sobre listas negras, reportes y soporte tecnico.
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="panel-head">
+          <div class="agent-avatar">A</div>
+          <div>
+            <div class="agent-name">Agente Inteligente</div>
+            <div class="agent-role">Especialista en contratacion publica</div>
+          </div>
+          <span class="agent-tag">En linea</span>
+        </div>
+        <div class="panel-body">
+          <div class="panel-step done">1. Verificacion de identidad</div>
+          <div class="panel-step">2. Apertura del canal seguro</div>
+          <div class="panel-step">3. Analisis del caso</div>
+          <div class="panel-step">4. Recomendaciones y acciones</div>
+        </div>
+        <div class="panel-metrics">
+          <div>
+            <div class="metric-value">98%</div>
+            <div class="metric-label">Satisfaccion</div>
+          </div>
+          <div>
+            <div class="metric-value">2 min</div>
+            <div class="metric-label">Respuesta promedio</div>
+          </div>
+          <div>
+            <div class="metric-value">24/7</div>
+            <div class="metric-label">Cobertura</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="help-grid reveal">
+      <div class="chat-card">
+        <div class="chat-head">
+          <div>
+            <div class="chat-title">Sala de ayuda</div>
+            <div class="chat-subtitle">Sesion demo - sin envio real</div>
+          </div>
+          <span class="chat-chip">Canal cifrado</span>
+        </div>
+        <div class="chat-body">
+          <div class="bubble bot">Hola, soy el agente ContratRed. Estoy listo para ayudarte.</div>
+          <div class="bubble user">Necesito revisar un posible bloqueo en listas negras.</div>
+          <div class="bubble bot">Perfecto. Vamos a validar tu documento y la entidad relacionada.</div>
+          <div class="bubble bot">Mientras tanto, puedes revisar las guias rapidas a la derecha.</div>
+        </div>
+        <div class="chat-input">
+          <input class="input-field" placeholder="Escribe tu consulta (disponible pronto)" disabled />
+          <button class="btn-send" type="button" disabled>Enviar</button>
+        </div>
+      </div>
+
+      <div class="side-stack">
+        <div class="side-card">
+          <h3>Accesos rapidos</h3>
+          <ul>
+            <li>Guia de validacion en listas negras</li>
+            <li>Formato para solicitudes de soporte</li>
+            <li>Mapa de reportes y exportaciones</li>
+          </ul>
+          <a class="link" href="/static/ayuda_pago.html">Ir a pago</a>
+        </div>
+        <div class="side-card">
+          <h3>Prioridad</h3>
+          <p>
+            Los usuarios verificados tendran un canal dedicado. El agente podra abrir una videollamada
+            y compartir pantalla una vez actives tu plan.
+          </p>
+          <div class="priority-row">
+            <div class="priority-tag">Standard</div>
+            <div class="priority-tag gold">Premium</div>
+          </div>
+        </div>
+        <div class="side-card">
+          <h3>Estado del sistema</h3>
+          <div class="system-row">
+            <span>Servicios activos</span>
+            <strong>5/5</strong>
+          </div>
+          <div class="system-row">
+            <span>Cola actual</span>
+            <strong>12 solicitudes</strong>
+          </div>
+          <div class="system-row">
+            <span>Tiempo maximo</span>
+            <strong>12 min</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/base.js" defer></script>
+  <script src="/static/js/ayuda.js" defer></script>
+</body>
+</html>

@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ContratRed | Dashboard Demo</title>
+  <title>ContratRed | Dashboard</title>
   <link rel="stylesheet" href="/static/css/base.css" />
-  <link rel="stylesheet" href="/static/css/auth.css" />
   <link rel="stylesheet" href="/static/css/dashboard_demo.css" />
 </head>
 <body>
@@ -13,150 +12,281 @@
 
   <header class="dash-topbar">
     <div class="brand">
-      <div class="brand-mark">?</div>
+      <div class="brand-mark">CR</div>
       <span>ContratRed</span>
     </div>
     <nav class="dash-nav">
       <a class="active" href="#">Dashboard</a>
-      <a href="#">Contratos</a>
+      <a href="#">Convocatorias</a>
       <a href="#">Reportes</a>
-      <a href="#">Ayuda</a>
+      <a href="/static/ayuda.html">Ayuda</a>
     </nav>
-    <div class="user-chip">
-      <span class="chip-dot"></span>
-      <span>saadi nicolas mendoza</span>
-      <span class="chip-pill">Gratis</span>
+    <div class="dash-actions">
+      <button class="side-toggle" id="side-toggle" type="button" aria-expanded="false" aria-controls="dash-side">
+        Panel
+      </button>
+      <div class="user-chip">
+        <span class="chip-dot"></span>
+        <span>Sadi Nicolas Mendoza</span>
+        <span class="chip-pill">Estandar</span>
+      </div>
     </div>
   </header>
 
-  <main class="dash-wrap">
-    <section class="hero">
-      <div>
-        <h1>Dashboard</h1>
-        <p>Bienvenido, saadi nicolas mendoza. Aqui tienes un resumen de la actividad de contratacion publica.</p>
-      </div>
-      <button class="btn-primary">Crear reporte</button>
-    </section>
-
-    <section class="plan">
-      <div>
-        <span class="plan-tag">Plan Estandar Activo</span>
-        <p>Actualiza a Premium para analisis avanzados y reportes personalizados.</p>
-      </div>
-      <button class="btn-gold">Actualizar plan</button>
-    </section>
-
-    <section class="kpis">
-      <div class="kpi-card">
-        <div class="kpi-title">Contratos activos</div>
-        <div class="kpi-value">1,247</div>
-        <div class="kpi-note up">+12% vs mes anterior</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-title">Valor total</div>
-        <div class="kpi-value">$45.2M</div>
-        <div class="kpi-note up">+8% vs mes anterior</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-title">Entidades</div>
-        <div class="kpi-value">89</div>
-        <div class="kpi-note up">+3% vs mes anterior</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-title">Nuevos hoy</div>
-        <div class="kpi-value">23</div>
-        <div class="kpi-note warn">+15% vs mes anterior</div>
-      </div>
-    </section>
-
-    <section class="filters">
-      <div class="search">
-        <input class="input-field" placeholder="Buscar contratos, entidades..." />
-      </div>
-      <select class="input-field select">
-        <option>Todas las categorias</option>
-        <option>Infraestructura</option>
-        <option>Salud</option>
-        <option>Tecnologia</option>
-      </select>
-      <button class="btn-primary">Exportar</button>
-    </section>
-
-    <section class="table-card">
-      <div class="table-head">
+  <div class="dash-shell">
+    <main class="dash-wrap">
+      <section class="hero">
         <div>
-          <h3>Contratos de Contratacion Publica</h3>
-          <span>5 contratos encontrados</span>
+          <span class="hero-eyebrow">Panel de control</span>
+          <h1>Dashboard</h1>
+          <p>Bienvenido, Sadi Nicolas. Aqui tienes un resumen de la contratacion publica relevante.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" type="button">Crear reporte</button>
+            <a class="btn-outline" href="/static/promociones.html">Ver promociones</a>
+          </div>
         </div>
-        <button class="btn-secondary">Ver todo</button>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Titulo</th>
-            <th>Monto</th>
-            <th>Requisitos minimos</th>
-            <th>Elegibilidad</th>
-            <th>Formatos</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Construccion de Puente Vehicular</strong>
-              <div class="muted">Ministerio de Obras Publicas</div>
-            </td>
-            <td class="amount">2,500,000.00 US$</td>
-            <td class="muted">Experiencia 5 anos · Capital $1M</td>
-            <td><span class="badge ok">Elegible</span></td>
-            <td class="muted">PDF · Excel</td>
-            <td><button class="btn-ghost">Descargar</button></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Suministro de Equipos Medicos</strong>
-              <div class="muted">Hospital Nacional</div>
-            </td>
-            <td class="amount">850,000.00 US$</td>
-            <td class="muted">Registro sanitario vigente</td>
-            <td><span class="badge warn">No Elegible</span></td>
-            <td class="muted">PDF</td>
-            <td><button class="btn-ghost">Descargar</button></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Servicios de Consultoria TI</strong>
-              <div class="muted">Ministerio de Educacion</div>
-            </td>
-            <td class="amount">320,000.00 US$</td>
-            <td class="muted">Equipo certificado</td>
-            <td><span class="badge ok">Elegible</span></td>
-            <td class="muted">PDF · Doc</td>
-            <td><button class="btn-ghost">Descargar</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+        <div class="hero-card">
+          <div class="hero-stat">
+            <span>Convocatorias hoy</span>
+            <strong>23</strong>
+          </div>
+          <div class="hero-stat">
+            <span>Alertas activas</span>
+            <strong>5</strong>
+          </div>
+          <div class="hero-stat">
+            <span>Ranking empresa</span>
+            <strong class="locked-text">Premium</strong>
+          </div>
+        </div>
+      </section>
 
-    <section class="cards">
-      <div class="info-card">
-        <h4>Alertas personalizadas</h4>
-        <p>Configura alertas para notificaciones de nuevos contratos.</p>
-        <button class="btn-secondary">Configurar</button>
+      <section class="plan">
+        <div>
+          <span class="plan-tag">Plan Estandar Activo</span>
+          <p>Actualiza a Premium para analisis avanzados, alertas inteligentes y scoring de elegibilidad.</p>
+        </div>
+        <button class="btn-gold" type="button">Actualizar plan</button>
+      </section>
+
+      <section class="kpis">
+        <div class="kpi-card">
+          <div class="kpi-title">Convocatorias activas</div>
+          <div class="kpi-value">1,247</div>
+          <div class="kpi-note up">+12% vs mes anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Valor total</div>
+          <div class="kpi-value">$45.2M</div>
+          <div class="kpi-note up">+8% vs mes anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Entidades nuevas</div>
+          <div class="kpi-value">89</div>
+          <div class="kpi-note up">+3% vs mes anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Nuevas hoy</div>
+          <div class="kpi-value">23</div>
+          <div class="kpi-note warn">+15% vs mes anterior</div>
+        </div>
+        <div class="kpi-card locked">
+          <div class="kpi-title">Probabilidad promedio</div>
+          <div class="kpi-value">--%</div>
+          <div class="kpi-note">Solo Premium</div>
+        </div>
+        <div class="kpi-card locked">
+          <div class="kpi-title">Ajuste de requisitos</div>
+          <div class="kpi-value">--</div>
+          <div class="kpi-note">Solo Premium</div>
+        </div>
+      </section>
+
+      <section class="filters">
+        <div class="search">
+          <input class="input-field" placeholder="Buscar contratos, entidades..." />
+        </div>
+        <select class="input-field select">
+          <option>Todas las categorias</option>
+          <option>Infraestructura</option>
+          <option>Salud</option>
+          <option>Tecnologia</option>
+        </select>
+        <button class="btn-secondary" type="button">Exportar</button>
+      </section>
+
+      <section class="table-card">
+        <div class="table-head">
+          <div>
+            <h3>Convocatorias de Contratacion Publica</h3>
+            <span>5 convocatorias encontradas</span>
+          </div>
+          <button class="btn-secondary" type="button">Ver todo</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Monto</th>
+              <th>Requisitos minimos</th>
+              <th>Elegibilidad</th>
+              <th>Formatos</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Construccion de Puente Vehicular</strong>
+                <div class="muted">Ministerio de Obras Publicas</div>
+              </td>
+              <td class="amount">2,500,000.00 US$</td>
+              <td class="muted">Experiencia 5 anos - Capital $1M</td>
+              <td><span class="badge ok">Elegible</span></td>
+              <td class="muted">PDF - Excel</td>
+              <td><button class="btn-ghost" type="button">Descargar</button></td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Suministro de Equipos Medicos</strong>
+                <div class="muted">Hospital Nacional</div>
+              </td>
+              <td class="amount">850,000.00 US$</td>
+              <td class="muted">Registro sanitario vigente</td>
+              <td><span class="badge warn">No Elegible</span></td>
+              <td class="muted">PDF</td>
+              <td><button class="btn-ghost" type="button">Descargar</button></td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Servicios de Consultoria TI</strong>
+                <div class="muted">Ministerio de Educacion</div>
+              </td>
+              <td class="amount">320,000.00 US$</td>
+              <td class="muted">Equipo certificado</td>
+              <td><span class="badge ok">Elegible</span></td>
+              <td class="muted">PDF - Doc</td>
+              <td><button class="btn-ghost" type="button">Descargar</button></td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Modernizacion Plataforma Digital</strong>
+                <div class="muted">Agencia Nacional TIC</div>
+              </td>
+              <td class="amount">1,200,000.00 US$</td>
+              <td class="muted">Certificacion ISO - Equipo senior</td>
+              <td><span class="badge ok">Elegible</span></td>
+              <td class="muted">PDF - Excel</td>
+              <td><button class="btn-ghost" type="button">Descargar</button></td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Obras de Infraestructura Vial</strong>
+                <div class="muted">Gobernacion Regional</div>
+              </td>
+              <td class="amount">5,800,000.00 US$</td>
+              <td class="muted">Capital $2M - Experiencia 7 anos</td>
+              <td><span class="badge warn">No Elegible</span></td>
+              <td class="muted">PDF</td>
+              <td><button class="btn-ghost" type="button">Descargar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="insights">
+        <div class="insight-card locked">
+          <div class="insight-title">Probabilidad de exito</div>
+          <div class="insight-value">--%</div>
+          <p>Algoritmo de scoring basado en tus requisitos.</p>
+        </div>
+        <div class="insight-card locked">
+          <div class="insight-title">Convocatorias filtradas</div>
+          <div class="insight-value">Solo Premium</div>
+          <p>Mostramos solo las convocatorias que cumples al 100%.</p>
+        </div>
+        <div class="insight-card locked">
+          <div class="insight-title">Alertas por correo</div>
+          <div class="insight-value">En espera</div>
+          <p>Recibe notificaciones cuando haya nuevas oportunidades.</p>
+        </div>
+      </section>
+
+      <section class="cards">
+        <div class="info-card">
+          <h4>Alertas personalizadas</h4>
+          <p>Configura alertas para notificaciones de nuevos contratos.</p>
+          <button class="btn-secondary" type="button">Configurar</button>
+        </div>
+        <div class="info-card">
+          <h4>Reportes avanzados</h4>
+          <p>Genera reportes detallados y analisis de tendencias.</p>
+          <button class="btn-secondary" type="button">Ver reportes</button>
+        </div>
+        <div class="info-card locked">
+          <h4>API de acceso</h4>
+          <p>Integra nuestros datos con tus sistemas existentes.</p>
+          <button class="btn-secondary" type="button">Solicitar acceso</button>
+        </div>
+      </section>
+    </main>
+
+    <aside class="dash-side" id="dash-side">
+      <div class="side-card">
+        <div class="side-title">Estado de cuenta</div>
+        <div class="side-row">
+          <span>Plan actual</span>
+          <strong>Estandar</strong>
+        </div>
+        <div class="side-row">
+          <span>Renovacion</span>
+          <strong>05 Abr 2026</strong>
+        </div>
+        <button class="btn-gold" type="button">Actualizar plan</button>
       </div>
-      <div class="info-card">
-        <h4>Reportes avanzados</h4>
-        <p>Genera reportes detallados y analisis de tendencias.</p>
-        <button class="btn-secondary">Ver reportes</button>
+
+      <div class="side-card locked">
+        <div class="side-title">Metricas premium</div>
+        <div class="side-metric">
+          <span>Score de elegibilidad</span>
+          <strong>--</strong>
+        </div>
+        <div class="side-metric">
+          <span>Ranking sector</span>
+          <strong>--</strong>
+        </div>
+        <div class="side-metric">
+          <span>Alertas inteligentes</span>
+          <strong>--</strong>
+        </div>
       </div>
-      <div class="info-card">
-        <h4>API de acceso</h4>
-        <p>Integra nuestros datos con tus sistemas existentes.</p>
-        <button class="btn-secondary">Documentacion</button>
+
+      <div class="side-card">
+        <div class="side-title">Actividad reciente</div>
+        <div class="side-item">
+          <strong>Convocatoria nueva</strong>
+          <span>Infraestructura vial - 2h</span>
+        </div>
+        <div class="side-item">
+          <strong>Checklist actualizado</strong>
+          <span>3 requisitos nuevos - ayer</span>
+        </div>
+        <div class="side-item">
+          <strong>Reporte exportado</strong>
+          <span>Formato PDF - ayer</span>
+        </div>
       </div>
-    </section>
-  </main>
+
+      <div class="side-card">
+        <div class="side-title">Atajos</div>
+        <a class="side-link" href="/static/promociones.html">Ver promociones</a>
+        <a class="side-link" href="/static/ayuda.html">Hablar con agente</a>
+        <a class="side-link" href="#">Gestionar notificaciones</a>
+      </div>
+    </aside>
+  </div>
+
+  <div class="side-overlay" id="side-overlay"></div>
 
   <script src="/static/js/base.js" defer></script>
   <script src="/static/js/dashboard_demo.js" defer></script>

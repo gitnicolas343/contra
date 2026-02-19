@@ -24,28 +24,32 @@
   </header>
 
   <main class="help-main">
-    <section class="help-hero">
+    <div class="help-subnav reveal">
+      <a class="active" href="/static/ayuda.html">Resumen</a>
+      <a href="/static/ayuda_promos.html">Promociones</a>
+      <a href="/static/ayuda_pago.html">Pago</a>
+      <a href="/static/ayuda_chat.html">Chatbot</a>
+    </div>
+
+    <section class="help-hero reveal">
       <div class="hero-copy">
-        <span class="eyebrow">Agente ContratRed</span>
-        <h1>Centro de ayuda con conexion asistida</h1>
+        <span class="eyebrow">Centro de ayuda</span>
+        <h1>Modulos de soporte y activacion</h1>
         <p>
-          Esta pagina simula la conexion con el agente que tendra el portal. Aqui se muestra
-          el estado del canal, el tiempo de respuesta y un entorno de chat listo para activarse.
+          Elige el modulo que necesitas: promociones, pago o acceso al chatbot. Cada paso
+          esta separado para que la experiencia sea clara y profesional.
         </p>
         <div class="hero-actions">
-          <button class="btn-primary" id="btn-conectar" type="button">Conectar con agente</button>
-          <a class="btn-secondary" href="/static/promociones.html">Ver planes</a>
+          <a class="btn-primary" href="/static/ayuda_chat.html">Ir al chatbot</a>
+          <a class="btn-secondary" href="/static/ayuda_promos.html">Ver promociones</a>
         </div>
         <div class="status-row">
           <div class="status-pill">
-            <span class="status-dot" id="status-dot"></span>
-            <span id="status-text">Disponible</span>
+            <span class="status-dot"></span>
+            <span>Disponible</span>
           </div>
           <div class="status-item">Tiempo estimado: 3-5 min</div>
           <div class="status-item">Canal seguro activo</div>
-        </div>
-        <div class="status-note" id="status-log">
-          El agente estara listo para responder consultas sobre listas negras, reportes y soporte tecnico.
         </div>
       </div>
 
@@ -81,67 +85,46 @@
       </div>
     </section>
 
-    <section class="help-grid">
-      <div class="chat-card">
-        <div class="chat-head">
-          <div>
-            <div class="chat-title">Sala de ayuda</div>
-            <div class="chat-subtitle">Sesion demo - sin envio real</div>
-          </div>
-          <span class="chat-chip">Canal cifrado</span>
+    <section class="module-grid reveal">
+      <article class="module-card">
+        <div class="module-icon">P</div>
+        <h3>Promociones</h3>
+        <p>Compara planes Estandar y Premium con beneficios claros.</p>
+        <div class="module-kpis">
+          <span class="kpi-chip">Planes activos</span>
+          <span class="kpi-chip">Beneficios</span>
         </div>
-        <div class="chat-body">
-          <div class="bubble bot">Hola, soy el agente ContratRed. Estoy listo para ayudarte.</div>
-          <div class="bubble user">Necesito revisar un posible bloqueo en listas negras.</div>
-          <div class="bubble bot">Perfecto. Vamos a validar tu documento y la entidad relacionada.</div>
-          <div class="bubble bot">Mientras tanto, puedes revisar las guias rapidas a la derecha.</div>
+        <div class="module-actions">
+          <a class="btn-secondary" href="/static/ayuda_promos.html">Abrir modulo</a>
         </div>
-        <div class="chat-input">
-          <input class="input-field" placeholder="Escribe tu consulta (disponible pronto)" disabled />
-          <button class="btn-send" type="button" disabled>Enviar</button>
+      </article>
+      <article class="module-card">
+        <div class="module-icon">$</div>
+        <h3>Pago</h3>
+        <p>Formulario preparado para integrar tu pasarela favorita.</p>
+        <div class="module-kpis">
+          <span class="kpi-chip">Checkout listo</span>
+          <span class="kpi-chip">Seguro</span>
         </div>
-      </div>
-
-      <div class="side-stack">
-        <div class="side-card">
-          <h3>Accesos rapidos</h3>
-          <ul>
-            <li>Guia de validacion en listas negras</li>
-            <li>Formato para solicitudes de soporte</li>
-            <li>Mapa de reportes y exportaciones</li>
-          </ul>
-          <a class="link" href="/static/promociones.html">Ver planes sugeridos</a>
+        <div class="module-actions">
+          <a class="btn-secondary" href="/static/ayuda_pago.html">Abrir modulo</a>
         </div>
-        <div class="side-card">
-          <h3>Prioridad</h3>
-          <p>
-            Los usuarios verificados tendran un canal dedicado. El agente podra abrir una videollamada
-            y compartir pantalla una vez actives tu plan.
-          </p>
-          <div class="priority-row">
-            <div class="priority-tag">Standard</div>
-            <div class="priority-tag gold">Premium</div>
-          </div>
+      </article>
+      <article class="module-card">
+        <div class="module-icon">C</div>
+        <h3>Chatbot</h3>
+        <p>Acceso al agente virtual en un entorno dedicado.</p>
+        <div class="module-kpis">
+          <span class="kpi-chip">Canal directo</span>
+          <span class="kpi-chip">Prioridad</span>
         </div>
-        <div class="side-card">
-          <h3>Estado del sistema</h3>
-          <div class="system-row">
-            <span>Servicios activos</span>
-            <strong>5/5</strong>
-          </div>
-          <div class="system-row">
-            <span>Cola actual</span>
-            <strong>12 solicitudes</strong>
-          </div>
-          <div class="system-row">
-            <span>Tiempo maximo</span>
-            <strong>12 min</strong>
-          </div>
+        <div class="module-actions">
+          <a class="btn-primary" href="/static/ayuda_chat.html">Ir al chat</a>
         </div>
-      </div>
+      </article>
     </section>
 
-    <section class="help-actions">
+    <section class="help-actions reveal">
       <div class="action-card">
         <h3>Documentacion guiada</h3>
         <p>Accede a guias, tutoriales y preguntas frecuentes con un flujo paso a paso.</p>
@@ -153,7 +136,7 @@
         <button class="btn-secondary" type="button">Crear ticket</button>
       </div>
       <div class="action-card">
-        <h3>Preparar informacion</h3>
+        <h3>Checklist de preparacion</h3>
         <p>Reune los datos clave antes de iniciar el chat para agilizar la validacion.</p>
         <button class="btn-secondary" type="button">Checklist rapido</button>
       </div>
@@ -164,4 +147,3 @@
   <script src="/static/js/ayuda.js" defer></script>
 </body>
 </html>
-
