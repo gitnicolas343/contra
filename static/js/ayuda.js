@@ -1,96 +1,66 @@
 ﻿(() => {
-  const button = document.getElementById("btn-conectar");
-  const statusText = document.getElementById("status-text");
-  const statusDot = document.getElementById("status-dot");
-  const statusLog = document.getElementById("status-log");
+  const bindConnector = (buttonId, dotId, textId, logId) => {
+    const button = document.getElementById(buttonId);
+    const statusDot = document.getElementById(dotId);
+    const statusText = document.getElementById(textId);
+    const statusLog = logId ? document.getElementById(logId) : null;
 
-  if (!button || !statusText || !statusDot || !statusLog) return;
+    if (!button || !statusDot || !statusText) return;
 
-  button.addEventListener("click", () => {
-    button.disabled = true;
-    button.textContent = "Conectando...";
-    statusText.textContent = "Conectando";
-    statusDot.classList.add("pulse");
-    statusLog.textContent = "Estamos validando tu solicitud y abriendo el canal seguro.";
+    button.addEventListener("click", () => {
+      button.disabled = true;
+      button.textContent = "Conectando...";
+      statusText.textContent = "Conectando";
+      statusDot.classList.add("pulse");
+      if (statusLog) {
+        statusLog.textContent = "Estamos validando tu solicitud y abriendo el canal seguro.";
+      }
 
-    window.setTimeout(() => {
-      button.disabled = false;
-      button.textContent = "Solicitar agente";
-      statusText.textContent = "En cola";
-      statusDot.classList.remove("pulse");
-      statusDot.classList.add("warn");
-      statusLog.textContent = "Solicitud registrada. Un agente se unira en breve para continuar.";
-    }, 1400);
-  });
+      window.setTimeout(() => {
+        button.disabled = false;
+        button.textContent = "Solicitar agente";
+        statusText.textContent = "En cola";
+        statusDot.classList.remove("pulse");
+        statusDot.classList.add("warn");
+        if (statusLog) {
+          statusLog.textContent = "Solicitud registrada. Un agente se unira en breve para continuar.";
+        }
+      }, 1400);
+    });
+  };
+
+  bindConnector("btn-conectar", "status-dot", "status-text", "status-log");
+  bindConnector("btn-conectar-alt", "status-dot-alt", "status-text-alt", null);
 })();
 
 (() => {
-  const items = Array.from(document.querySelectorAll(".help-item"));
-  if (!items.length) return;
+  const stepSections = Array.from(document.querySelectorAll(".step-section"));
+  const stepperItems = Array.from(document.querySelectorAll(".stepper-item"));
 
-  const closeItem = (item) => {
-    const panel = item.querySelector(".help-panel");
-    const toggle = item.querySelector(".help-toggle");
-    item.classList.remove("is-open");
-    if (toggle) toggle.setAttribute("aria-expanded", "false");
-    if (panel) panel.style.maxHeight = "0px";
+  if (!stepSections.length) return;
+
+  const showStep = (step) => {
+    stepSections.forEach((section) => {
+      section.classList.toggle("is-active", section.dataset.step === step);
+    });
+    stepperItems.forEach((item) => {
+      item.classList.toggle("is-active", item.dataset.step === step);
+    });
   };
 
-  const openItem = (item, scrollIntoView) => {
-    items.forEach((other) => {
-      if (other !== item) closeItem(other);
-    });
-
-    const panel = item.querySelector(".help-panel");
-    const toggle = item.querySelector(".help-toggle");
-    item.classList.add("is-open");
-    if (toggle) toggle.setAttribute("aria-expanded", "true");
-    if (panel) panel.style.maxHeight = `${panel.scrollHeight}px`;
-
-    if (scrollIntoView) {
-      item.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  const openSection = (key) => {
-    const target = items.find((item) => item.dataset.section === key);
-    if (target) openItem(target, true);
-  };
-
-  items.forEach((item) => {
-    const panel = item.querySelector(".help-panel");
-    const toggle = item.querySelector(".help-toggle");
-    if (toggle) {
-      toggle.addEventListener("click", () => {
-        if (item.classList.contains("is-open")) {
-          closeItem(item);
-        } else {
-          openItem(item, true);
-        }
-      });
-    }
-
-    if (item.classList.contains("is-open") && panel) {
-      panel.style.maxHeight = `${panel.scrollHeight}px`;
-    }
+  document.querySelectorAll("[data-next-step]").forEach((btn) => {
+    btn.addEventListener("click", () => showStep(btn.dataset.nextStep));
   });
 
-  window.addEventListener("resize", () => {
-    items.forEach((item) => {
-      if (!item.classList.contains("is-open")) return;
-      const panel = item.querySelector(".help-panel");
-      if (panel) panel.style.maxHeight = `${panel.scrollHeight}px`;
-    });
+  document.querySelectorAll("[data-prev-step]").forEach((btn) => {
+    btn.addEventListener("click", () => showStep(btn.dataset.prevStep));
   });
 
-  document.querySelectorAll("[data-open-section]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const target = button.getAttribute("data-open-section");
-      if (target) openSection(target);
-    });
+  stepperItems.forEach((item) => {
+    item.addEventListener("click", () => showStep(item.dataset.step));
   });
 
-  window.HelpOpenSection = openSection;
+  showStep("1");
 })();
 
 (() => {
@@ -130,11 +100,9 @@
       } catch (_) {}
     }
 
-    if (planCards.length) {
-      planCards.forEach((card) => {
-        card.classList.toggle("active", card.dataset.plan === key);
-      });
-    }
+    planCards.forEach((card) => {
+      card.classList.toggle("active", card.dataset.plan === key);
+    });
 
     if (summaryPlan) summaryPlan.textContent = plan.name;
     if (summaryTag) summaryTag.textContent = plan.tag;
@@ -154,9 +122,8 @@
   planButtons.forEach((button) => {
     button.addEventListener("click", () => {
       setPlan(button.dataset.planSelect, true);
-      if (typeof window.HelpOpenSection === "function") {
-        window.HelpOpenSection("pago");
-      }
+      const goToStep = document.querySelector(".stepper-item[data-step='3']");
+      if (goToStep) goToStep.click();
     });
   });
 

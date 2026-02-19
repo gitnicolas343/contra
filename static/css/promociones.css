@@ -5,6 +5,49 @@
   gap: 44px;
 }
 
+.stepper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stepper-item {
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.stepper-item.is-active {
+  color: var(--primary);
+  background: rgba(106, 13, 173, 0.15);
+  box-shadow: 0 8px 18px rgba(106, 13, 173, 0.18);
+}
+
+.step-section {
+  display: none;
+}
+
+.step-section.is-active {
+  display: block;
+  animation: fadeUp 0.45s ease both;
+}
+
+.section-head {
+  margin-bottom: 16px;
+}
+
+.step-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+}
+
 .promo-orb {
   position: fixed;
   width: 420px;
@@ -231,37 +274,6 @@ nav a.is-active {
 .btn-select:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
-}
-
-.checkout-placeholder {
-  padding: 16px 18px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px dashed rgba(148, 163, 184, 0.6);
-  color: var(--text-secondary);
-  font-weight: 600;
-}
-
-.checkout-placeholder.is-hidden {
-  display: none;
-}
-
-.checkout {
-  display: grid;
-  gap: 18px;
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(16px);
-  overflow: hidden;
-  pointer-events: none;
-  transition: max-height 0.6s ease, opacity 0.3s ease, transform 0.3s ease;
-}
-
-.checkout.is-visible {
-  max-height: 2200px;
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
 }
 
 .checkout-head {
